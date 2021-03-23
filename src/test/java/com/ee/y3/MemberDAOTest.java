@@ -11,7 +11,7 @@ import com.ee.y3.member.MemberDAO;
 import com.ee.y3.member.MemberDTO;
 
 
-public class MemberDAOTest {
+public class MemberDAOTest extends MyAbstractTest {
 
 	@Autowired
 	private MemberDAO memberDAO;
@@ -19,11 +19,16 @@ public class MemberDAOTest {
 	@Test
 	public void memberLogin() throws Exception {
 		
+		// MemberDTO를 Login에 매개변수로 선언하면 값을 넣어줄 수가 없어서 오류
+		// 메서드 안에 선언해야함
+		
 		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId("iu");
+		memberDTO.setPw("pw1");
 		
-		List<MemberDTO> ar = memberDAO.memberLogin(memberDTO);
+		memberDTO = memberDAO.memberLogin(memberDTO);
 		
-		assertNotEquals(0, ar.size());
+		assertNotNull(memberDTO);
 		
 		
 	}

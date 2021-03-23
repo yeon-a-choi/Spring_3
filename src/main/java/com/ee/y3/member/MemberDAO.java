@@ -7,12 +7,13 @@ import java.sql.ResultSet;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberDAO {
 	
-	
+	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.ee.y3.member.MemberDAO.";
 	
@@ -63,17 +64,13 @@ public class MemberDAO {
 //		
 //	}
 			
-			
-	
+
 	
 	
 	//login
-	public List<MemberDTO> memberLogin(MemberDTO memberDTO)throws Exception{
+	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
 		
-		memberDTO.setId("iu");
-		memberDTO.setPw("pw1");
-		
-		return sqlSession.selectList(NAMESPACE+"memberLogin", memberDTO);
+		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberDTO);
 			
 	}
 

@@ -9,11 +9,6 @@ public class MemberDTO {
 	private String email;
 	
 	
-	public MemberDTO() {
-		
-	}
-	
-	
 	//get set
 	public String getId() {
 		return id;
