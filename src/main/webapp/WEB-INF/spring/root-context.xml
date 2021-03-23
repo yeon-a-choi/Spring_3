@@ -5,6 +5,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
+	<!-- Pool은 매번 connection을 만들어야하는 것을 한 번만 만들어서 계속 쓸 수 있도록 하는 것 -->
 	<!-- DB 연결 Pool 객체 생성 -->
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 		
@@ -21,6 +22,8 @@
 	
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="mapperLocations" value="classpath:database/mappers/*Mapper.xml"></property>
+		
+		<!-- 설정 파일은 딱 하나만! 이라서 locations가 아니라 location 그래서 conf.xml앞에 *conf.xml 불가 -->
 		<property name="configLocation" value="classpath:database/config/conf.xml"></property>
 		
 	</bean>
