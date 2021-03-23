@@ -4,13 +4,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class MemberDAO {
 	
 	
+	private SqlSession sqlSession;
+	private String NAMESPACE = "com.ee.y3.member.MemberDAO.";
+	
+	
+	//Update
 	public int memberUpdate(MemberDTO memberDTO) throws Exception {
 		
 		//id를 제외하고 나머지 수정
@@ -19,27 +26,17 @@ public class MemberDAO {
 	}
 	
 	
+	//Delete
 	public int memberDelete(MemberDTO memberDTO) throws Exception{
 		
 		
 		return 
 	}
 	
-	//memberJoin 데이터를 받아서 DB에 insert 하는 메서드
+	//Join
 	public int memberJoin(MemberDTO memberDTO) throws Exception{
 		
-		// 1. 로그인 정보
-		String user = "user02";
-		String password = "user02";
-		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
-		String driver = "oracle.jdbc.driver.OracleDriver";
 		
-		
-		// 2. 메모리에 로딩
-		Class.forName(driver);
-		
-		// 3. 로그인 시도
-		Connection conn = DriverManager.getConnection(url, user, password);
 		
 		//4. sql
 		String sql = "insert into MEMBER values(?, ?, ?, ?, ?)";
@@ -71,57 +68,11 @@ public class MemberDAO {
 	
 	
 	//login
-	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
+	public List<MemberDTO> memberLogin(MemberDTO memberDTO)throws Exception{
 		
-		// 1. 로그인 정보
-		String user = "user02";
-		String password = "user02";
-		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
-		String driver = "oracle.jdbc.driver.OracleDriver";
+		List<MemberDTO> ar;
+		return  ar = sqlSession.selectList(NAMESPACE, memberDTO);
 		
-		
-		// 2. 메모리에 로딩
-		Class.forName(driver);
-		
-		// 3. 로그인 시도
-		Connection conn = DriverManager.getConnection(url, user, password);
-		
-		// 4. sql문 생성
-		String sql = "SELECT * FROM MEMBER WHERE id = ? and pw = ?";
-		
-		// 5. 미리 전송
-		PreparedStatement st = conn.prepareStatement(sql);
-
-		
-		// 6. ? 처리
-		//1번째 ?와 2번째 ?
-		st.setString(1, memberDTO.getId());
-		st.setString(2, memberDTO.getPw());
-		
-		
-		// 7. 최종 전송 후 처리
-		ResultSet rs = st.executeQuery();
-		
-		if(rs.next()) {
-			
-			memberDTO.setName(rs.getString("name"));
-			memberDTO.setEmail(rs.getString("email"));
-			memberDTO.setPhone(rs.getString("phone"));
-			
-		} else {
-			
-			memberDTO = null;
-			
-		}
-		
-		
-		//8. 해제
-		rs.close();
-		st.close();
-		conn.close();
-		
-		
-		return memberDTO;
 		
 	}
 
