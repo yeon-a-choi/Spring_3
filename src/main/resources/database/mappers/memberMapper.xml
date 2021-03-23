@@ -9,8 +9,8 @@
 																		<!-- resultType : com.ee.y3.member.MemberDTO받아서 하나씩 넘기기? -->
 	<select id="memberLogin" parameterType="com.ee.y3.member.MemberDTO" resultType="com.ee.y3.member.MemberDTO">
 	
-		<!-- String Type? -->
-		select * from member where id = #{id}, pw = #{pw}
+		<!-- Type -->
+		select * from member where id = #{id} and pw = #{pw}
 		
 	</select>
 
