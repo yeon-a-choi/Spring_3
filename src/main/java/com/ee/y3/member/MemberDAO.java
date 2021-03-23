@@ -1,11 +1,5 @@
 package com.ee.y3.member;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,6 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MemberDAO {
 	
+	//sqlSession 값 보내줌 Autowired로 연결
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.ee.y3.member.MemberDAO.";
