@@ -71,6 +71,7 @@ public class MemberDAOTest extends MyAbstractTest {
 		
 		memberDTO.setId("id4");
 		
+		//값을 모두 받아오는 list가 없으므로 전체 값 변경만 가능
 		//memberDTO = memberDAO.memberLogin(memberDTO);
 		
 		memberDTO.setPw("pw5");
