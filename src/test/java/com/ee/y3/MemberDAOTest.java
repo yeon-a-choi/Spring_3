@@ -16,7 +16,7 @@ public class MemberDAOTest extends MyAbstractTest {
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	//@Test
+	@Test
 	public void memberLogin() throws Exception {
 		
 		// MemberDTO를 Login에 매개변수로 선언하면 값을 넣어줄 수가 없어서 오류
@@ -64,12 +64,24 @@ public class MemberDAOTest extends MyAbstractTest {
 		
 	}
 	
+	@Test
 	public void memberUpdate() throws Exception{
 		
 		MemberDTO memberDTO = new MemberDTO();
 		
 		memberDTO.setId("id4");
 		
+		//memberDTO = memberDAO.memberLogin(memberDTO);
+		
+		memberDTO.setPw("pw5");
+		memberDTO.setName("jin");
+		memberDTO.setPhone("01036215732");
+		memberDTO.setEmail("jin@naver.com");
+		
+		int result = memberDAO.memberUpdate(memberDTO);
+		
+		assertEquals(1, result);
+			
 	}
 	
 }

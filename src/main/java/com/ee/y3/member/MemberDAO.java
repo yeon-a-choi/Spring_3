@@ -22,9 +22,8 @@ public class MemberDAO {
 	public int memberUpdate(MemberDTO memberDTO) throws Exception {
 		
 		//id를 제외하고 나머지 수정
-		int result = sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
+		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
 		
-		return result;
 	}
 	
 	
@@ -44,8 +43,6 @@ public class MemberDAO {
 		return result;
 		
 	}
-			
-
 	
 	
 	//login
