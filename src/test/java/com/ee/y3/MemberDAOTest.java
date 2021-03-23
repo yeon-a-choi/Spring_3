@@ -62,7 +62,7 @@ public class MemberDAOTest extends MyAbstractTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void memberUpdate() throws Exception{
 		
 		MemberDTO memberDTO = new MemberDTO();

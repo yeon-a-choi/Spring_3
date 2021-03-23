@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- configuration 스키마? -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<!-- 여기안이 설정 -->
+	
+	<!-- 별칭을 주는 것 -->
+	<typeAliases>
+												<!-- 통상적으로 별칭은 클래스이름으로 -->
+		<typeAlias type="com.ee.y3.member.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.ee.y3.bankbook.BankBookDTO" alias="BankBookDTO"/>
+	
+	</typeAliases>
+
+</configuration>
