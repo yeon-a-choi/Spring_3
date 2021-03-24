@@ -15,5 +15,7 @@
 		<typeAlias type="com.ee.y3.bankbook.BankBookDTO" alias="BankBookDTO"/>
 	
 	</typeAliases>
+	
+
 
 </configuration>
