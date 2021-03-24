@@ -30,4 +30,10 @@ public class BankBookService {
 	public int setDelete(BankBookDTO bankBookDTO) throws Exception {
 		return bankBookDAO.setDelete(bankBookDTO);
 	}
+	
+	
+	//Update
+	public int setUpdate(BankBookDTO bankBookDTO) throws Exception{
+		return bankBookDAO.setUpdate(bankBookDTO);
+	}
 }

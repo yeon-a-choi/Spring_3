@@ -55,7 +55,6 @@ public class BankBookDAO {
 	public int setUpdate(BankBookDTO bankBookDTO) throws Exception{
 		
 		return sqlSession.update(NAMESPACE+"setUpdate", bankBookDTO);
-				
 	}
 	
 }
