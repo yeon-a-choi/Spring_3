@@ -11,8 +11,14 @@ public class MemberService {
 
 	//Login
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception{
-		
 		return memberDAO.memberLogin(memberDTO);
+	}
+	
+	//Join
+	public int memberJoin(MemberDTO memberDTO) throws Exception{
+		System.out.println(memberDTO.getId());
+		
+		return memberDAO.memberJoin(memberDTO);
 		
 		
 	}
