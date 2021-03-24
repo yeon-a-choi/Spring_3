@@ -12,15 +12,22 @@ public class BankBookService {
 	@Autowired
 	private BankBookDAO bankBookDAO;
 
+	//List
 	public List<BankBookDTO> getList() throws Exception {
 		
 		return bankBookDAO.getList();
 	}
 	
 	
+	//Select
 	public BankBookDTO getSelect(BankBookDTO bankBookDTO) throws Exception {
 		
 		return bankBookDAO.getSelect(bankBookDTO);
 	}
 	
+	
+	//Delete
+	public int setDelete(BankBookDTO bankBookDTO) throws Exception {
+		return bankBookDAO.setDelete(bankBookDTO);
+	}
 }

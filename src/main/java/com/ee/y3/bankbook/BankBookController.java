@@ -37,4 +37,16 @@ public class BankBookController {
 		
 	}
 	
+	@RequestMapping(value = "bankbookDelete")
+	public String setDelete(BankBookDTO bankBookDTO) throws Exception {
+		
+		int result = bankBookService.setDelete(bankBookDTO);
+		
+		System.out.println(result);
+		
+		//삭제하면 ListPage로 가기위해서 return을 list 주소로
+		return "redirect:./bankbookList";
+			
+	}
+	
 }

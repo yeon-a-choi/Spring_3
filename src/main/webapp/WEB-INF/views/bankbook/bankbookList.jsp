@@ -24,10 +24,10 @@
 		
 		<tbody>
 			<!-- list에서 하나 꺼내서 dto에 넣자 -->
-			<!-- c:forEach는 for문 -->
+			<!-- c:forEach는 for문 기억!-->
 			<c:forEach items="${list}" var="dto">
 			<tr>
-				
+														<!-- 값이 잘 넘어가는지 주소를 보고 확인  -->
 				<td><a href="./bankbookSelect?bookNumber=${dto.bookNumber}">${dto.bookName}</a></td>
 				<td>${dto.bookRate}</td>
 				<td>${dto.bookSale}</td>
