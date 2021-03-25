@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +8,7 @@
 </head>
 <body>
 
-	<h1>Account List Page</h1>
-	
-	<c:forEach items="${list}" var="account">
-		<h3></h3>
-	</c:forEach>
+	<h1>Account Make Page</h1>
+
 </body>
 </html>

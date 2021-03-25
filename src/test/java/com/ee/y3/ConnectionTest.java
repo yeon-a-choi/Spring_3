@@ -16,7 +16,6 @@ public class ConnectionTest extends MyAbstractTest{
 
 		//Main Branch Test
 
-		
 		@Autowired
 		private SqlSession sqlSession;
 		

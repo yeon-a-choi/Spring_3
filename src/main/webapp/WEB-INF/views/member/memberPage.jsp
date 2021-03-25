@@ -18,6 +18,8 @@
 	<a href="./memberUpdate">수정</a><br>
 	<a href="./memberDelete">탈퇴</a><br>
 	<a href="../account/accountList">계좌관리</a><br>
+	
+	<!-- 로그인한 사람의 계좌정보 -->
 
 </body>
 </html>

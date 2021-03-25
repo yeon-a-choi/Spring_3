@@ -14,6 +14,10 @@
 	<h3>Name : ${dto.bookName}</h3>
 	<h3>Number : ${dto.bookNumber}</h3>
 	
+	<c:if test="not empty member">
+		<a href="../account/accountMake">계좌 개설</a>
+	</c:if>
+	
 	<!-- java에서 try catch랑 비슷한 것 -->
 	<c:catch>
 		<!-- 로그인을 안한다면 member.id가 null이므로 오류가 뜸. -->	
@@ -22,6 +26,7 @@
 			<a href="./bankbookUpdate?bookNumber=${dto.bookNumber}"> Update </a>
 		</c:if>
 	</c:catch>
+
 	
 	<!-- %가 들어간 주석은 java 포함 주석 -->
 	
