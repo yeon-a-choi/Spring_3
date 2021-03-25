@@ -13,6 +13,9 @@
 	<h3>${member.name}</h3>
 	<h3>${member.phone}</h3>
 	<h3>${member.email}</h3>
+	
+	<!-- 여기에 값을 주면 보안상 문제가 생길 수 있음 -->
+	<a href="./memberUpdate">수정</a><br>
 	<a href="./memberDelete">탈퇴</a>
 
 </body>

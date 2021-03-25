@@ -33,4 +33,9 @@ public class MemberService {
 		return memberDAO.memberDelete(memberDTO);
 	}
 	
+	//Update
+	public int memberUpdate(MemberDTO memberDTO) throws Exception{
+		return memberDAO.memberUpdate(memberDTO);
+	}
+	
 }

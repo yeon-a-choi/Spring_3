@@ -14,36 +14,28 @@ public class MemberDAO {
 	
 	
 	//Update
-	public int memberUpdate(MemberDTO memberDTO) throws Exception {
-		
+	public int memberUpdate(MemberDTO memberDTO) throws Exception {		
 		//id를 제외하고 나머지 수정
-		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
-		
+		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);		
 	}
 	
 	
 	//Delete
-	public int memberDelete(MemberDTO memberDTO) throws Exception{
-		
+	public int memberDelete(MemberDTO memberDTO) throws Exception{		
 		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
-
 	}
 	
 	//Join
 	public int memberJoin(MemberDTO memberDTO) throws Exception{
-		
 		int result = sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
 		
-		return result;
-		
+		return result;	
 	}
 	
 	
 	//login
-	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
-		
-		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberDTO);
-			
+	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{	
+		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberDTO);			
 	}
 	
 	

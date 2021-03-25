@@ -84,4 +84,23 @@ public class MemberController {
 	}
 
 	
+	//memberUpdate
+	
+	//값을 받는부분, 보내는 부분 나눠야함. 안그러면 Update해도 수정전 값 그대로남음
+	@RequestMapping(value="memberUpdate")
+	public void memberUpdate(MemberDTO memberDTO, HttpSession session) throws Exception {
+		//session에 memberDTO의 값이 있음.
+		//넘어올땐 Object타입이 되므로 형변환 시켜줘야함.
+		memberDTO = (MemberDTO)session.getAttribute("member");
+	}
+	
+	@RequestMapping(value="memberUpdate", method=RequestMethod.POST)
+	public String memberUpdate(MemberDTO memberDTO) throws Exception {
+
+		int result = memberService.memberUpdate(memberDTO);	
+		System.out.println(result);
+		
+		return "redirect:../";
+	}
+	
 }
