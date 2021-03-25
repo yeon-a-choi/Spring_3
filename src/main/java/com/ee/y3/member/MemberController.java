@@ -15,12 +15,23 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	//logout
+	@RequestMapping("memberLogout")
+	public String memberLogout(HttpSession session) throws Exception{
+		//session의 유지시간을 0으로
+		session.invalidate();
+		
+		return "redirect:../";
+	}
+	
+	
+	
 	
 	
 	//login
 	@RequestMapping("memberLogin")
 	public void memberLogin() throws Exception{
-		
+		//return타입이 뭐든간에 ModelAndView가 리턴
 	}
 	
 	@RequestMapping(value = "memberLogin", method=RequestMethod.POST)
