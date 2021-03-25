@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ee.y3.account.AccountController;
+
 @Controller
 @RequestMapping(value = "/member/**")
 public class MemberController {
@@ -63,7 +65,7 @@ public class MemberController {
 	
 	//memberPage
 	//@RequestMapping("memberPage")
-	@RequestMapping(value = "memberPage")
+	@RequestMapping(value = {"memberPage", "../account/accountList"})
 	public void memberPage() throws Exception{
 		
 	}
