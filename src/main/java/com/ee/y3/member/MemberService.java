@@ -20,7 +20,17 @@ public class MemberService {
 		
 		return memberDAO.memberJoin(memberDTO);
 		
-		
+	}
+	
+//	//Select page
+//	public MemberDTO memberPage(MemberDTO memberDTO) throws Exception {	
+//		return memberDAO.memberPage(memberDTO);
+//	}
+	
+	
+	//Delete
+	public int memberDelete(MemberDTO memberDTO) throws Exception{		
+		return memberDAO.memberDelete(memberDTO);
 	}
 	
 }

@@ -25,9 +25,8 @@ public class MemberDAO {
 	//Delete
 	public int memberDelete(MemberDTO memberDTO) throws Exception{
 		
-		int result = sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
-		
-		return result;
+		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
+
 	}
 	
 	//Join
@@ -46,5 +45,12 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberDTO);
 			
 	}
+	
+	
+//	//memberSelect
+//	public MemberDTO memberPage(MemberDTO memberDTO) throws Exception{
+//		
+//		return sqlSession.selectOne(NAMESPACE+"memberPage", memberDTO);
+//	}
 
 }

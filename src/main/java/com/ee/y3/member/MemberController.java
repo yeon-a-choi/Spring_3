@@ -24,10 +24,7 @@ public class MemberController {
 		return "redirect:../";
 	}
 	
-	
-	
-	
-	
+
 	//login
 	@RequestMapping("memberLogin")
 	public void memberLogin() throws Exception{
@@ -62,5 +59,29 @@ public class MemberController {
 		
 		return "redirect:../";
 	}
+	
+	
+	//memberPage
+	//@RequestMapping("memberPage")
+	@RequestMapping(value = "memberPage")
+	public void memberPage() throws Exception{
+		
+	}
+	
+	
+	//memberDelete
+	@RequestMapping(value = "memberDelete")
+	public String memberDelete(HttpSession session) throws Exception{
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		int result = memberService.memberDelete(memberDTO);
+		
+		System.out.println(result);
+		//정보를 삭제했으니 로그아웃시켜야함, session에는 값이 아직 남아있음.
+		session.invalidate();
+		
+		return "redirect:../";
+	}
+
 	
 }

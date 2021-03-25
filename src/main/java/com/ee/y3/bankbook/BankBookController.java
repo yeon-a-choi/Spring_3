@@ -17,6 +17,7 @@ public class BankBookController {
 	@Autowired
 	private BankBookService bankBookService;
 	
+	//List
 	@RequestMapping(value = "bankbookList")
 	public void getList(Model model) throws Exception {
 		
@@ -25,6 +26,7 @@ public class BankBookController {
 		
 	}
 	
+	//Select
 	@RequestMapping(value = "bankbookSelect")
 	public ModelAndView getSelect(BankBookDTO bankBookDTO) throws Exception {
 		
@@ -38,6 +40,7 @@ public class BankBookController {
 		
 	}
 	
+	//Delete
 	@RequestMapping(value = "bankbookDelete")
 	public String setDelete(BankBookDTO bankBookDTO) throws Exception {
 		

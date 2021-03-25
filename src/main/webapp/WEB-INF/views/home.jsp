@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- page session false로 되면 값 안넘어옴 -->
 <!--  @page session="true" 이 부분 아에 지워버리기 -->
+
 <html>
 <head>
 	<title>Home</title>
