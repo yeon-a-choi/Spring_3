@@ -93,12 +93,15 @@ public class MemberController {
 	
 	@RequestMapping(value="memberUpdate", method=RequestMethod.POST)
 	public String memberUpdate(MemberDTO memberDTO, HttpSession session) throws Exception {
-
+													//httpsession은 내장객체, new 할 수 없음.
 		int result = memberService.memberUpdate(memberDTO);	
 		System.out.println(result);
 		
-		//session에 있는 값을 가져오기때문에 수정 후 db에서 한번 더 값을 가져와야함.
+		//session에 있는 값을 가져오기때문에 수정 후 db에서 한번 더 값을 가져와야함. (덮어쓰기)
 		if(result>0) {
+			//이름을 member로 하는 이유는 home.jsp에 member로 받아오겠다고 했기때문에
+			//이름을 바꾸려면 계속 home.jsp에서도 변경해주어야함.
+			//이름을 무엇으로 하던 상관없지만 통일해서 쓰기!
 			session.setAttribute("member", memberDTO);
 		}
 		
