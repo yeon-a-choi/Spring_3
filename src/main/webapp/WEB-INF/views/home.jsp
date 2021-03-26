@@ -63,7 +63,69 @@
 		<p>Footer</p>
 	</div>
 
-
+	<!-- 
+	
+		기능
+		: 글 리스트	/ 누구나 접근 가능
+		: 상세보기		/ 누구나 접근 가능 - 글리스트에서 제목을 클릭		
+		: 글 수정		/ 관리자만 접근 가능
+		: 글 삭제		/ 관리자만 접근 가능
+		: 글 작성		/ 관리자만 접근 가능
+	
+		Back-end
+		 : com.ee.y3.notice
+		 : notice mapper
+		
+		
+			- NoticeDTO	
+				
+			- NoticeMapper
+			
+			- NoticeDAO
+				getList 	: 글 리스트
+				getSelete	: 상세보기
+				setInsert	: 글 작성
+				setDelete	: 글 삭제
+				setUpdate	: 글 수정
+				- 할 수 있다면 하기, select할 때 증가시켜야함.
+				setHipUpdate : 조회수 1증가 -> select에 같이 호출
+				
+			- NoticeService
+				getList 	: 글 리스트
+				getSelete	: 상세보기
+				setInsert	: 글 작성
+				setDelete	: 글 삭제
+				setUpdate	: 글 수정
+			
+			- NoticeController
+				getList 	: 글 리스트
+				getSelete	: 상세보기
+				setInsert	: 글 작성 v 2개필요(get,post)
+				setDelete	: 글 삭제
+				setUpdate	: 글 수정 v 2개필요(get,post)
+			
+				
+		Front-end
+		 : WEB-INF/view/notice/
+		 
+		 		글 리스트
+		 		/notice/noticeList		GET		noticeList.jsp
+		 
+		 		글 상세보기
+		 		/notice/noticeSelect	GET		noticeSelect.jsp
+		 		
+		 		글 작성
+		 		/notice/noticeInsert	GET		noticeInsert.jsp
+		 		/notice/noticeInsert	POST	글 리스트로 이동
+		 		
+		 		글 수정
+		 		/notice/noticeUpdate	GET		noticeUpdate.jsp
+		 		/notice/noticeUpdate	POST	글 리스트로 이동
+		 		
+		 		글 삭제
+		 		/notice/noticeDelete	GET		글 리스트로 이동
+	
+	 -->
 
 
 
