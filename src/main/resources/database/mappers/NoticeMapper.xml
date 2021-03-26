@@ -9,22 +9,23 @@
 
 	<!-- 글 전체 불러오기 -->
 	<select id="getList" parameterType="NoticeDTO" resultType="NoticeDTO">	
-		select * from notice
+		select * from notice 
 	</select>
+	
 	
 	<!-- 선택한 글의 상세 내용 불러오기 -->
 	<select id="getSelect" parameterType="NoticeDTO" resultType="NoticeDTO">
-		select * from notice where num = #{num}
+		select * from notice where num=#{num}
 	</select>
 	
 	<!-- 공지 작성 -->
 	<insert id="setInsert" parameterType="NoticeDTO">
-		insert into notice (num, title, writer, contents, regdate) values (notice_seq.nextval, #{title}, #{writer}, #{contents}, sysdate)
+		insert into notice values (notice_seq.nextval, #{title}, #{writer}, #{contents}, 0, sysdate)
 	</insert>
 	
 	<!-- 공지 수정 -->
 	<update id="setUpdate" parameterType="NoticeDTO">
-		update notice set title = #{title}, writer = #{writer}, contents = #{contents}, regdate = sysdate where num = #{num}
+		update notice set title = #{title}, writer = #{writer}, contents = #{contents}, hit = #{hit}, regdate = sysdate where num = #{num}
 	</update>
 	
 	<!-- 공지 삭제 -->

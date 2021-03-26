@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ee.y3.bankbook.BankBookDAO;
 import com.ee.y3.bankbook.BankBookDTO;
+import com.ee.y3.notice.NoticeDTO;
 
 public class BankBookDAOTest extends MyAbstractTest{
 	
@@ -31,8 +32,11 @@ public class BankBookDAOTest extends MyAbstractTest{
 	
 	//@Test
 	public void getSelectTest() throws Exception{
-	
-		BankBookDTO bankBookDTO = bankBookDAO.getSelect(null);
+		
+		BankBookDTO bankBookDTO = new BankBookDTO();
+		bankBookDTO.setBookNumber(3);
+		
+		bankBookDTO = bankBookDAO.getSelect(bankBookDTO);
 		
 		assertNotNull(bankBookDTO);
 		
