@@ -5,18 +5,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
+<c:import url="../template/bootStrap.jsp"></c:import>
+
+<title>BankBook Select</title>
 </head>
 <body>
+
+	<c:import url="../template/header.jsp"></c:import>
 
 	<h1>BankBook Select Page</h1>
 	
 	<h3>Name : ${dto.bookName}</h3>
 	<h3>Number : ${dto.bookNumber}</h3>
 	
-	<c:if test="not empty member">
-		<a href="../account/accountMake">계좌 개설</a>
-	</c:if>
+	
+	<a href="../account/accountMake?bookNumber=${dto.bookNumber}">계좌 개설</a>
+	
 	
 	<!-- java에서 try catch랑 비슷한 것 -->
 	<c:catch>
