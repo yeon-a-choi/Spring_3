@@ -58,7 +58,7 @@ public class NoticeDAOTest extends MyAbstractTest{
 	}
 	
 	//update
-	@Test
+	//@Test
 	public void setUpdateTest() throws Exception{
 		
 		NoticeDTO noticeDTO = new NoticeDTO();
@@ -77,13 +77,28 @@ public class NoticeDAOTest extends MyAbstractTest{
 		System.out.println(noticeDTO.getTitle());
 		System.out.println(noticeDTO.getContents());
 		
-		//여기에서 DAO로 값이 안넘어가고 그대로 JUit 정지.
+		//해결, DB commit 안하고 돌려서 트랜젝션걸렸던 거였움
 		int result = noticeDAO.setUpdate(noticeDTO);
 		
 		System.out.println(result);
 		
 		assertNotNull(result);
 		
+	}
+	
+	
+	//delete
+	//@Test
+	public void setDelete() throws Exception{
+		
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setNum(5);
+		
+		int result = noticeDAO.setDelete(noticeDTO);
+		
+		System.out.println(result);
+		
+		assertNotNull(result);
 	}
 
 
