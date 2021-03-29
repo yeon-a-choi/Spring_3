@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ee.y3.member.MemberDTO;
+import com.ee.y3.util.Pager;
 
 @Controller
 @RequestMapping(value = "/bankbook/**")
@@ -23,10 +24,18 @@ public class BankBookController {
 	
 	//List
 	@RequestMapping(value = "bankbookList")
-	public void getList(Model model) throws Exception {
+	public ModelAndView getList(Pager pager) throws Exception {
 		
-		List<BankBookDTO> ar = bankBookService.getList();
-		model.addAttribute("list", ar);
+		ModelAndView mv = new ModelAndView();
+		
+		List<BankBookDTO> ar = bankBookService.getList(pager);
+		
+		mv.addObject("list", ar);
+		mv.setViewName("bankbook/bankbookList");
+		
+		mv.addObject("pager", pager);
+		
+		return mv;
 		
 	}
 	

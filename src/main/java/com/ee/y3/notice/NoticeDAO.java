@@ -1,13 +1,11 @@
 package com.ee.y3.notice;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ee.y3.bankbook.BankBookDTO;
 import com.ee.y3.util.Pager;
 
 @Repository
@@ -17,6 +15,11 @@ public class NoticeDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.ee.y3.notice.NoticeDAO.";
 	
+	
+	//count
+	public Long getTotalCount()throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount");
+	}
 	
 	// List
 	public List<NoticeDTO> getList(Pager pager) throws Exception{

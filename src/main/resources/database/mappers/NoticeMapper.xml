@@ -7,6 +7,11 @@
     
 <mapper namespace="com.ee.y3.notice.NoticeDAO">
 
+	<select id="getTotalCount" resultType="Long">
+		<!-- parameterType="long"을 사용함, 보낼 값 하나 -->
+		select count(num) from notice
+	</select>
+
 	<!-- 글 전체 불러오기 -->
 	<select id="getList" parameterType="Pager" resultType="NoticeDTO">	
 		<!-- Map의 키를 받아서 불러오기

@@ -7,8 +7,8 @@ public class Pager {
 	private long lastRow;
 	
 	
-	private long totalPage;
-	
+	private long startNum;
+	private long LastNum;
 	
 	//get set
 	public long getStartRow() {
@@ -42,12 +42,21 @@ public class Pager {
 		this.curPage = curPage;
 	}
 	
-	public long getTotalPage() {
-		return totalPage;
+	
+	public long getStartNum() {
+		return startNum;
 	}
-	public void setTotalPage(long totalPage) {
-		this.totalPage = totalPage;
+	public void setStartNum(long startNum) {
+		this.startNum = startNum;
 	}
+	public long getLastNum() {
+		return LastNum;
+	}
+	public void setLastNum(long lastNum) {
+		LastNum = lastNum;
+	}
+	
+
 
 	
 }

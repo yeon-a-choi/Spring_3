@@ -27,6 +27,7 @@ public class NoticeService {
 		
 		//방법 2
 		int perPage = 10; //한 페이지에 보여줄 글의 갯수
+		int perBlock = 5; //한 블럭당 보여줄 숫자의 갯수
 		
 		//startRow, LastRow
 		long startRow = (pager.getCurPage()-1)*perPage+1;
@@ -36,33 +37,47 @@ public class NoticeService {
 		pager.setLastRow(LastRow);
 		
 		
+		// 1. totalCount
 		// 10개씩 나누어 몇 페이지를 만들어야 할 지 계산
-		long totalCount=123;
-		//long totalPage = totalCount / perPage;
+		long totalCount=noticeDAO.getTotalCount();
+		
+		
+		// 2. totalPage
 		long totalPage = totalCount/perPage;
 		
-		//내가 한 코드
-		
-//		long totalPage = 0;
-//		
-//		if(totalCount%perPage == 0) {
-//			totalPage = totalCount / perPage;
-//		} else {
-//			totalPage = (totalCount/perPage)+1;
-//		}
-		
-		
-		//강사님 코드
-		if(totalCount%perPage != 0) {
-			totalPage++;
+
+		// 3. totalBlock
+		long totalBlock = totalPage / perBlock;
+		if(totalPage%5 != 0) {
+			totalBlock++;
 		}
 		
-		System.out.println("TotalPage :"+ totalPage);
+		// 4. curBlock
+		long curBlock = pager.getCurPage()/perBlock;
+		if(pager.getCurPage()%perBlock != 0) {
+			curBlock++;
+		}
 		
-		pager.setTotalPage(totalPage);
+		// 5. startNum, lastNum
+		long startNum = (curBlock-1)*perBlock+1;	
+		long lastNum = curBlock*perBlock;
+		
+		pager.setStartNum(startNum);
+		pager.setLastNum(lastNum);
+		
+
+		
+		System.out.println("TotalPage :"+ totalPage);
+		System.out.println("TotalBlock : "+totalBlock);
+		System.out.println("CurBlock : "+curBlock);
 		
 		return noticeDAO.getList(pager);
+		
 	}
+	
+	
+	
+	
 	
 	//Select
 	public NoticeDTO getSelect(NoticeDTO noticeDTO) throws Exception{

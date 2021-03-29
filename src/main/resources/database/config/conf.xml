@@ -16,6 +16,8 @@
 		<typeAlias type="com.ee.y3.account.AccountDTO" alias="AccountDTO"/>
 		<typeAlias type="com.ee.y3.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.ee.y3.util.Pager" alias="Pager"/>
+		
+		<typeAlias type="java.lang.Long" alias="Long"/>
 	</typeAliases>
 	
 
