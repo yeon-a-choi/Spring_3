@@ -19,14 +19,14 @@ public class NoticeDAOTest extends MyAbstractTest{
 	
 	//list
 	//@Test
-	public void getListTest() throws Exception{
-		Pager pager = new Pager();
-		pager.setStratRow(11);
-		pager.setLastRow(20);
-		List<NoticeDTO> ar = noticeDAO.getList(pager);
-		assertNotEquals(0, ar.size());
-
-	}
+//	public void getListTest() throws Exception{
+//		Pager pager = new Pager();
+//		pager.setStratRow(11);
+//		pager.setLastRow(20);
+//		List<NoticeDTO> ar = noticeDAO.getList(pager);
+//		assertNotEquals(0, ar.size());
+//
+//	}
 	
 	//select
 	//@Test
