@@ -9,7 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ee.y3.util.Pager;
 
 
 @Controller
@@ -21,10 +24,13 @@ public class NoticeController {
 	
 	//List
 	@RequestMapping(value="noticeList")
-	public ModelAndView getList(long curPage) throws Exception{
+	//@RequestParam(defaultValue="1") 값이 넘어오지않을 때 기본 값
+	public ModelAndView getList(Pager pager) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		List<NoticeDTO> ar = noticeService.getList(curPage);
+		
+		System.out.println(pager.getCurPage());
+		List<NoticeDTO> ar = noticeService.getList(pager.getCurPage());
 		mv.addObject("list", ar);
 		mv.setViewName("notice/noticeList");
 		

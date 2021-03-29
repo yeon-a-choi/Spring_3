@@ -12,7 +12,7 @@ public class NoticeService {
 	
 	@Autowired
 	private NoticeDAO noticeDAO;
-	
+
 	//List
 	public List<NoticeDTO> getList(long curPage) throws Exception{
 		Pager pager = new Pager();
