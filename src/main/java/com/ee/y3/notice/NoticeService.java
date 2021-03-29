@@ -35,6 +35,32 @@ public class NoticeService {
 		pager.setStartRow(startRow);
 		pager.setLastRow(LastRow);
 		
+		
+		// 10개씩 나누어 몇 페이지를 만들어야 할 지 계산
+		long totalCount=123;
+		//long totalPage = totalCount / perPage;
+		long totalPage = totalCount/perPage;
+		
+		//내가 한 코드
+		
+//		long totalPage = 0;
+//		
+//		if(totalCount%perPage == 0) {
+//			totalPage = totalCount / perPage;
+//		} else {
+//			totalPage = (totalCount/perPage)+1;
+//		}
+		
+		
+		//강사님 코드
+		if(totalCount%perPage != 0) {
+			totalPage++;
+		}
+		
+		System.out.println("TotalPage :"+ totalPage);
+		
+		pager.setTotalPage(totalPage);
+		
 		return noticeDAO.getList(pager);
 	}
 	

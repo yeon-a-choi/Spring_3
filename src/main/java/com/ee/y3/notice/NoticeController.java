@@ -30,10 +30,17 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		
 		System.out.println(pager.getCurPage());
+		
+		System.out.println("Service 호출 전 : "+pager.getTotalPage());
+		
 		List<NoticeDTO> ar = noticeService.getList(pager);
+		
+		System.out.println("Service 호출 후 : "+pager.getTotalPage());
 		//List<NoticeDTO> ar = noticeService.getList(curPage);
 		mv.addObject("list", ar);
 		mv.setViewName("notice/noticeList");
+		
+		mv.addObject("pager", pager);
 		
 		return mv;
 		

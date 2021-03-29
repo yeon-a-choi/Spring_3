@@ -6,6 +6,10 @@ public class Pager {
 	private long startRow;
 	private long lastRow;
 	
+	
+	private long totalPage;
+	
+	
 	//get set
 	public long getStartRow() {
 		return startRow;
@@ -19,6 +23,8 @@ public class Pager {
 	public void setLastRow(long lastRow) {
 		this.lastRow = lastRow;
 	}
+	
+	//초기값
 	public long getCurPage() {
 		
 		if(this.curPage <1) {
@@ -35,5 +41,13 @@ public class Pager {
 		
 		this.curPage = curPage;
 	}
+	
+	public long getTotalPage() {
+		return totalPage;
+	}
+	public void setTotalPage(long totalPage) {
+		this.totalPage = totalPage;
+	}
 
+	
 }
