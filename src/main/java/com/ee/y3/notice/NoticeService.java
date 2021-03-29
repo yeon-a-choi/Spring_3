@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ee.y3.util.Pager;
+
 @Service
 public class NoticeService {
 	
@@ -12,9 +14,17 @@ public class NoticeService {
 	private NoticeDAO noticeDAO;
 	
 	//List
-	public List<NoticeDTO> getList() throws Exception{
+	public List<NoticeDTO> getList(long curPage) throws Exception{
+		Pager pager = new Pager();
+		long perPage = 10L;
 		
-		return noticeDAO.getList();
+		//아래의 식은 5개나 20개로 보는게 바뀌면 다시 계산식을 바꿔줘야함
+		//pager.setStartRow((curPage*perPage)-9);
+		
+		pager.setStartRow((curPage-1)*perPage+1);
+		pager.setLastRow(curPage*perPage);
+		
+		return noticeDAO.getList(pager);
 	}
 	
 	//Select

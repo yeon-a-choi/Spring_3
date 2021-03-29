@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ee.y3.notice.NoticeDAO;
 import com.ee.y3.notice.NoticeDTO;
+import com.ee.y3.util.Pager;
 
 
 public class NoticeDAOTest extends MyAbstractTest{
@@ -19,8 +20,10 @@ public class NoticeDAOTest extends MyAbstractTest{
 	//list
 	//@Test
 	public void getListTest() throws Exception{
-		
-		List<NoticeDTO> ar = noticeDAO.getList();
+		Pager pager = new Pager();
+		pager.setStratRow(11);
+		pager.setLastRow(20);
+		List<NoticeDTO> ar = noticeDAO.getList(pager);
 		assertNotEquals(0, ar.size());
 
 	}
@@ -41,17 +44,22 @@ public class NoticeDAOTest extends MyAbstractTest{
 	//@Test
 	public void setInsertTest() throws Exception{
 		
-		NoticeDTO noticeDTO = new NoticeDTO();
+		int result=0;
 		
-		noticeDTO.setTitle("[안내] 배우 신이안 tvN ‘낮과 밤’ 출연 안내");
-		noticeDTO.setWriter("관리자");
-		noticeDTO.setContents("안녕하세요.\r\n"
-				+ "FNC Entertainment 입니다.\r\n"
-				+ "오는 11월 30일 첫 방송되는 tvN 월화드라마 <낮과 밤>에\r\n"
-				+ "배우 신이안이 ‘오경민’ 역으로 출연합니다.");
-		
-		
-		int result = noticeDAO.setInsert(noticeDTO);
+		for(int i=0; i<120; i++) {
+			NoticeDTO noticeDTO = new NoticeDTO();
+			
+			noticeDTO.setTitle("[안내] 안내사항"+i);
+			noticeDTO.setWriter("관리자"+i);
+			noticeDTO.setContents("contents"+i);
+			
+			result = noticeDAO.setInsert(noticeDTO);
+			
+			if(i%10 == 0) {
+				//10번돌고 0.5초쉬기
+				Thread.sleep(500);
+			}
+		}
 		
 		assertNotNull(result);
 		

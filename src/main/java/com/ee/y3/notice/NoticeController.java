@@ -21,10 +21,14 @@ public class NoticeController {
 	
 	//List
 	@RequestMapping(value="noticeList")
-	public void getList(Model model) throws Exception{
+	public ModelAndView getList(long curPage) throws Exception{
 		
-		List<NoticeDTO> ar = noticeService.getList();
-		model.addAttribute("list", ar);
+		ModelAndView mv = new ModelAndView();
+		List<NoticeDTO> ar = noticeService.getList(curPage);
+		mv.addObject("list", ar);
+		mv.setViewName("notice/noticeList");
+		
+		return mv;
 		
 	}
 	

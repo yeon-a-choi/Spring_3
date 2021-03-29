@@ -8,8 +8,19 @@
 <mapper namespace="com.ee.y3.notice.NoticeDAO">
 
 	<!-- 글 전체 불러오기 -->
-	<select id="getList" parameterType="NoticeDTO" resultType="NoticeDTO">	
-		select * from notice 
+	<select id="getList" parameterType="Pager" resultType="NoticeDTO">	
+		<!-- Map의 키를 받아서 불러오기
+		parameterType="java.util.Map"으로 바꿔주고
+		select * from 
+			(select rownum R, N.* from 
+			(select * from notice where num>0 order by num desc) N)
+		where R between #{startRow} and #{lastRow} -->
+		
+		select * from
+			(select rownum R, N.* from
+				(select * from notice where num>0 order by num desc) N)
+		where R between #{startRow} and #{lastRow}
+		
 	</select>
 	
 	

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class NoticeDTO {
 	
-	private int num;
+	private long num;
 	private String title;
 	private String writer;
 	private String contents;
@@ -13,10 +13,10 @@ public class NoticeDTO {
 	
 	
 	//get set
-	public int getNum() {
+	public long getNum() {
 		return num;
 	}
-	public void setNum(int num) {
+	public void setNum(long num) {
 		this.num = num;
 	}
 	public String getTitle() {

@@ -15,6 +15,7 @@
 		<typeAlias type="com.ee.y3.bankbook.BankBookDTO" alias="BankBookDTO"/>
 		<typeAlias type="com.ee.y3.account.AccountDTO" alias="AccountDTO"/>
 		<typeAlias type="com.ee.y3.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.ee.y3.util.Pager" alias="Pager"/>
 	</typeAliases>
 	
 

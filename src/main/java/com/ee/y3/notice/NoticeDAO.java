@@ -1,5 +1,6 @@
 package com.ee.y3.notice;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ee.y3.bankbook.BankBookDTO;
+import com.ee.y3.util.Pager;
 
 @Repository
 public class NoticeDAO {
@@ -17,8 +19,13 @@ public class NoticeDAO {
 	
 	
 	// List
-	public List<NoticeDTO> getList() throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getList");
+	public List<NoticeDTO> getList(Pager pager) throws Exception{
+		
+		//Map 사용
+		//HashMap<String, Long> map = new HashMap<String, Long>();
+		//map.put("startRow", 1L);
+		//map.put("lastRow", 10L);
+		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
 	//Select
