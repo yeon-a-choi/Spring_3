@@ -75,13 +75,15 @@
 			<form action="./noticeList" class="form-inline">
 			
 			  <div class="input-group-prepend">
+			  
 			   <select class="form-control" name="kind" id="sel1">
 			    <option>Title</option>
 			    <option>Contents</option>
 			    <option>Writer</option>
-			  	</select>
+			   </select>
+			  	
 			  </div>
-			  <input type="text" class="form-control" name="search" placeholder="Username">
+			  <input type="text" class="form-control" name="search" placeholder="검색어는 한글로 입력">
 			  
 			  <div class="input-group-append">
 			    <button class="btn btn-success" type="submit">Search</button>

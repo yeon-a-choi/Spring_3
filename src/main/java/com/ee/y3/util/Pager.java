@@ -94,8 +94,8 @@ public class Pager {
 		return search;
 	}
 	public void setSearch(String search) {
-		if(this.search == null) {
-			this.search="";
+		if(search == null) {
+			search="";
 		}
 		this.search = search;
 	}

@@ -24,6 +24,9 @@ public class NoticeDAO {
 	// List
 	public List<NoticeDTO> getList(Pager pager) throws Exception{
 		
+		System.out.println("kind : "+pager.getKind());
+		System.out.println("search : "+pager.getSearch());
+		
 		//Map 사용
 		//HashMap<String, Long> map = new HashMap<String, Long>();
 		//map.put("startRow", 1L);
