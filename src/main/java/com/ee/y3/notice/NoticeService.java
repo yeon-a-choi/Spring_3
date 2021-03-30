@@ -39,12 +39,15 @@ public class NoticeService {
 		
 		// 1. totalCount
 		// 10개씩 나누어 몇 페이지를 만들어야 할 지 계산
-		long totalCount=noticeDAO.getTotalCount();
+		long totalCount=noticeDAO.getTotalCount(pager);
 		
 		
-		// 2. totalPage
+		// 2. totalPage 
+		//언제까지 찍어야하는지를 가진 변수
 		long totalPage = totalCount/perPage;
-		
+		if(totalCount%perPage != 0) {
+			totalPage++;
+		}
 
 		// 3. totalBlock
 		long totalBlock = totalPage / perBlock;
@@ -61,6 +64,24 @@ public class NoticeService {
 		// 5. startNum, lastNum
 		long startNum = (curBlock-1)*perBlock+1;	
 		long lastNum = curBlock*perBlock;
+		
+		
+		// 6. curBlock(현재블록)이 마지막 block일 때(totalBlock) 
+		if(curBlock == totalBlock) {
+			lastNum = totalPage;
+		}
+		
+		// 7. 이전, 다음 block 존재 여부
+		//이전
+		if(curBlock !=1) {
+			pager.setPre(true);
+		}
+		
+		//다음
+		if(curBlock != totalBlock) {
+			pager.setNext(true);
+		}
+		
 		
 		pager.setStartNum(startNum);
 		pager.setLastNum(lastNum);

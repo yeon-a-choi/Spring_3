@@ -35,7 +35,9 @@ public class BankBookService {
 		
 		// 2. totalPage
 		long totalPage = totalCount/perPage;
-		
+		if(totalCount%perPage != 0) {
+			totalPage++;
+		}
 
 		// 3. totalBlock
 		long totalBlock = totalPage / perBlock;
