@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
-h2{
+h1{
 	color:red;
+}
+
+#t1{
+	
+	width: 200px;
+	height: 300px;
+}
+
+.b1{
+	background-color: yellow;
 }
