@@ -16,8 +16,12 @@
 	
 	<!-- 여기에 값을 주면 보안상 문제가 생길 수 있음 -->
 	<a href="./memberUpdate">수정</a><br>
-	<a href="./memberDelete">탈퇴</a>
-	<a href="../account/accountList">계좌관리</a>
+
+	<a href="./memberDelete">탈퇴</a><br>
+	<a href="../account/accountList">계좌관리</a><br>
+	
+	<!-- 로그인한 사람의 계좌정보 -->
+
 
 </body>
 </html>
