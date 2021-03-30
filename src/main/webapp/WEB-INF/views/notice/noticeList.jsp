@@ -92,15 +92,17 @@
 			 </form>
 			  
 		</div>
+		
+		<c:catch>
+			<!-- 로그인을 안한다면 member.id가 null이므로 오류가 뜸. -->	
+			<c:if test="${member.id eq 'admin'}">
+				<a class="btn btn-outline-success" role="button" href="./noticeInsert?num=${notice.num}"> Write </a>
+			</c:if>
+		</c:catch>
 
 	</div>
 	
-	<c:catch>
-		<!-- 로그인을 안한다면 member.id가 null이므로 오류가 뜸. -->	
-		<c:if test="${member.id eq 'admin'}">
-			&ensp;&ensp;&ensp;<a class="btn btn-outline-success" role="button" href="./noticeInsert?num=${notice.num}"> Insert </a>
-		</c:if>
-	</c:catch>
+
 
 </body>
 </html>

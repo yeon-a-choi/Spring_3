@@ -11,6 +11,17 @@
 
 <c:import url="./template/bootStrap.jsp"></c:import>
 
+<!-- css 연결 -->
+<link rel="stylesheet" href="./resources/css/test.css">
+
+<!-- js 연결 -->
+<script type="text/javascript" src="./resources/js/test.js"></script>
+
+<!-- 
+<script type="text/javascript">
+	alert('hello word!');
+</script> -->
+
 <title>Home</title>
 </head>
 <body>
@@ -38,9 +49,11 @@
 				<hr class="d-sm-none">
 			</div>
 			<div class="col-sm-8">
-				<h2>TITLE HEADING</h2>
-				<h5>Title description, Dec 7, 2017</h5>
-				<div class="fakeimg">Fake Image</div>
+				<h2>Spring is Comming</h2>
+				<h5>Chipmunk, Mar 30, 2021</h5>
+				<div class="fakeimg">
+					<img style="width: 50%" alt="다람쥐" src="./resources/images/s1.jpeg">
+				</div>
 				<p>Some text..</p>
 				<p>Sunt in culpa qui officia deserunt mollit anim id est laborum
 					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -126,8 +139,6 @@
 		 		/notice/noticeDelete	GET		글 리스트로 이동
 	
 	 -->
-
-
 
 </body>
 </html>
