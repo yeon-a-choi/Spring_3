@@ -45,12 +45,17 @@ public class MemberController {
 	}
 	
 	
+	//JoinCheck
+	@RequestMapping("memberJoinCheck")
+	public void memberJoinCheck() throws Exception{
+	
+	}
+	
 	//join
 	@RequestMapping("memberJoin")
 	public void memberJoin() throws Exception{
 
 	}
-	
 	
 	@RequestMapping(value = "memberJoin", method=RequestMethod.POST)
 	public String memberJoin(MemberDTO memberDTO) throws Exception{

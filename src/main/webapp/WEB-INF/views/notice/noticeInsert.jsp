@@ -43,12 +43,15 @@
 				<label for="contents">Contents</label> 
 				<textarea class="form-control" rows="5" name="contents" id="comment"></textarea>
 			</div>
-
-			<button type="submit" class="btn btn-success">Insert</button>
+			
+			<button type="submit" class="btn btn-success" onclick="return insertCheck()">Insert</button>
+    		<input type="button" value="WRITE" class="btn btn-primary" onclick="insertCheck()">
 
 		</form>
 
 	</div>
+	
+	<script type="text/javascript" src="../resource/js/insertCheck.js"></script>
 
 </body>
 </html>
