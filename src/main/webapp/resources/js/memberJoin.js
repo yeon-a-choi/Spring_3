@@ -23,7 +23,7 @@ id.addEventListener("blur", function(){
 
 
 /* --------------------------------------- */
-// 비밀번호 글자 수 비교 / 비밀번호가 바뀌면 실행하는 이벤트
+// 비밀번호/비밀번호확인 글자 수 비교
 
 let pw = document.getElementById("pw");
 let pw2 = document.getElementById("pw2");
@@ -47,6 +47,7 @@ pw.addEventListener("blur", function(){
 });
 
 /* ---------------------------------------- */
+// 비밀번호가 바뀌면 실행하는 이벤트
 //비밀번호 바뀌기
 pw.addEventListener("change", function(){
 	if(pw.value!="" & pw2.value!=""){
@@ -70,7 +71,7 @@ pw2.addEventListener("blur", function(){
 
 
 /* ---------------------------------------- */
-// 강제 이벤트 발생(submit)
+// 강제 이벤트 발생(submit, focus)
 // 내가 한 코드
 
 let btn = document.getElementById("btn");
@@ -78,12 +79,20 @@ let name = document.getElementById("name");
 let phone = document.getElementById("phone");
 let email = document.getElementById("email");
 
+//이메일 인지 아닌지 확인하려 했으나 실패
+//.toString
+//let emailNum = email.lastIndexOf('@');
+//let emailCheck = email.substring(emailNum);
+
+console.log(emailNum);
+
 btn.addEventListener("click", function(){
 	//조건이 만족하면 서버로 보내고 만족하지 않으면 보내지않음.
 	let frm = document.getElementById("frm");
 	
 	if(id.value == "" || id.value.length<6){
 		alert("id를 입력하지않았거나, id가 6글자보다 작습니다.");
+		//focus를 사용해서 입력하지 않았거나, 올바르지 않은 정보 입력 시 해당 input칸으로 이동
 		id.focus();
 	} else if(pw.value == ""){
 		alert("pw를 입력하지않았습니다!");
@@ -94,8 +103,9 @@ btn.addEventListener("click", function(){
 	} else if(phone.value == ""){
 		alert("phone을 입력하지않았습니다!");
 		phone.focus();
+	  // || emailNum == -1
 	} else if(email.value == ""){
-		alert("email을 입력하지않았습니다!");
+		alert("email을 입력하지않았거나, 올바르지않은 이메일주소입니다!");
 		email.focus();
 	} else if(id.value != "" && id.value.length>5 && pw.value != "" && name.value != "" && phone.value != "" && email.value != ""){
 		//db로 값 넘기기 위해선 주석해제
