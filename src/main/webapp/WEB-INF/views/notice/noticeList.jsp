@@ -54,6 +54,7 @@
 	</div>
 	
 	<div class="container">
+		<!-- pageing -->
 		<ul class="pagination">
 		
 		  <c:if test="${pager.pre}">
@@ -69,6 +70,8 @@
 		  </c:if>
 		  
 		</ul>
+		
+		
 		
 		<div class="input-group mt-3 mb-3">
 		

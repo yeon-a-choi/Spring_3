@@ -9,6 +9,20 @@
 
 <c:import url="../template/bootStrap.jsp"></c:import>
 
+<style type="text/css">
+
+	.r1{
+		color:red;
+		<!-- 미만 -->
+	}
+	
+	.r2{
+		color:blue;
+		<!-- 이상 -->
+	}
+	
+</style>
+
 </head>
 <body>
 
@@ -19,12 +33,13 @@
 		<br>
 		<h2>Member Join Page</h2>
 		
-		<form action="./memberJoin" method="post">
+		<form  id="frm" action="./memberJoin" method="post">
 			<!-- ID -->
 			<div class="form-group">
 				<label for="id">ID</label> 
 				<input type="text" class="form-control" id="id" name="id"
 				aria-describedby="idHelp">
+				<h4 id=idResult></h4>
 				<!-- ID 는 6글자 이상 -->
 			</div>
 			
@@ -33,13 +48,15 @@
 			<div class="form-group">
 				<label for="pw">Password</label> 
 				<input type="password" class="form-control" id="pw" name="pw">
+				<h4 id="pwResult"></h4>
 				<!-- PW는 8글자 이상 -->
 			</div>
 			
 			<!-- Password 확인 -->
 			<div class="form-group">
-				<label for="pw">Password</label> <input type="password"
-					class="form-control" id="pw2" name="pw">
+				<label for="pw">Confirm Password</label> <input type="password"
+					class="form-control pw2Result" id="pw2">
+				<!-- 2번째 비밀번호를 입력했을 때, 같으면 아무일 X, 다르면 값을 지우기 -->
 				<!-- PW 두개는 일치 -->	
 			</div>	
 			
@@ -67,12 +84,19 @@
 				<!-- 비어 있으면 X -->
 			</div>
 			
-			<button type="submit" class="btn btn-primary">Join</button>
+			<!-- 이 버튼은 submit이벤트가 내장되어있어 값을 비교하고 보내는것이 아닌 그냥 보내므로 null값이여도 보내서 exception발생시킴 -->
+			<!-- <button type="submit" class="btn btn-primary" id="check">Submit</button> -->
+						
+			<!-- input type으로 만든 버튼은 form 내부/외부 둘 다 작동안함 -->
+			<!-- <input type="button" value="JOIN" class="btn btn-primary">  -->
+			
+			<input type="button" value="JOIN" id="btn" class="btn btn-primary">
 			
 		</form>
-
+		
 	</div>
-
+	
+	<script type="text/javascript" src="../resources/js/memberJoin.js"></script>
 
 </body>
 </html>

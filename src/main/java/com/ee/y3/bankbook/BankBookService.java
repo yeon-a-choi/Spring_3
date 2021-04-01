@@ -22,7 +22,6 @@ public class BankBookService {
 		
 		//startRow, LastRow
 		long startRow = (pager.getCurPage()-1)*perPage+1;
-		System.out.println(startRow);
 		long LastRow = pager.getCurPage()*perPage;
 		
 		pager.setStartRow(startRow);
@@ -30,10 +29,12 @@ public class BankBookService {
 		
 		
 		// 1. totalCount
-		long totalCount=bankBookDAO.getTotalCount();
+		// 10개씩 나누어 몇 페이지를 만들어야 할 지 계산
+		long totalCount=bankBookDAO.getTotalCount(pager);
 		
 		
-		// 2. totalPage
+		// 2. totalPage 
+		//언제까지 찍어야하는지를 가진 변수
 		long totalPage = totalCount/perPage;
 		if(totalCount%perPage != 0) {
 			totalPage++;
@@ -47,13 +48,31 @@ public class BankBookService {
 		
 		// 4. curBlock
 		long curBlock = pager.getCurPage()/perBlock;
-		if(pager.getCurPage() % perBlock != 0) {
+		if(pager.getCurPage()%perBlock != 0) {
 			curBlock++;
 		}
 		
 		// 5. startNum, lastNum
 		long startNum = (curBlock-1)*perBlock+1;	
 		long lastNum = curBlock*perBlock;
+		
+		
+		// 6. curBlock(현재블록)이 마지막 block일 때(totalBlock) 
+		if(curBlock == totalBlock) {
+			lastNum = totalPage;
+		}
+		
+		// 7. 이전, 다음 block 존재 여부
+		//이전
+		if(curBlock !=1) {
+			pager.setPre(true);
+		}
+		
+		//다음
+		if(curBlock != totalBlock) {
+			pager.setNext(true);
+		}
+		
 		
 		pager.setStartNum(startNum);
 		pager.setLastNum(lastNum);
@@ -63,8 +82,6 @@ public class BankBookService {
 		System.out.println("TotalPage :"+ totalPage);
 		System.out.println("TotalBlock : "+totalBlock);
 		System.out.println("CurBlock : "+curBlock);
-		
-		
 		
 		return bankBookDAO.getList(pager);
 	}

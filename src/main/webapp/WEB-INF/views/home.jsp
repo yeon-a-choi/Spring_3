@@ -14,26 +14,48 @@
 <!-- css 연결 -->
 <link rel="stylesheet" href="./resources/css/test.css">
 
-<!-- js 연결 -->
-<script type="text/javascript" src="./resources/js/test.js"></script>
+<!-- js 연결 
+<script type="text/javascript" src="./resources/js/test.js"></script>-->
 
 <title>Home</title>
+
 </head>
 <body>
 
+	<button onclick="go()">BUTTON</button>
+	<button id="btn">CILCK</button>
+	<button id="btn2">CILCK2</button>
+
+	<h1>Version 2</h1>
+
+	<script type="text/javascript">
+	
+		let btn = document.getElementById("btn");
+		let btn2 = document.getElementById("btn2");
+		
+		//btn2.addEventListener("click", go);
+		btn2.addEventListener("click", function(){
+			alert("btn2");
+			go();
+		});
+		
+		
+		//btn.onclick=go;
+		btn.onclick = function() {
+			alert("익명함수");
+			go();
+		}
+		
+		function go() {
+			alert("hello");
+		}
+	
+	</script>
+
 	<c:import url="./template/header.jsp"></c:import>
 
-	<div>
-		<button id="btn" onclick="go()">CLICK</button>
-		<button onclick="go2()">CLICK2</button>
-	</div>
 
-	<div id="c1" class="b1">
-		<h1 id="t1">Welcome Home Page</h1>
-		<input type="text">
-	</div>
 
-	<script type="text/javascript" src="./resources/js/test.js"></script>
 
 </body>
 </html>

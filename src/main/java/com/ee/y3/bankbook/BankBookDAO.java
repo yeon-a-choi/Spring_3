@@ -16,8 +16,8 @@ public class BankBookDAO {
 	private final String  NAMESPACE = "com.ee.y3.bankbook.BankBookDAO."; 
 	
 	//count
-	public long getTotalCount() throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getTotalCount");
+	public Long getTotalCount(Pager pager)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
 	//insert
@@ -44,6 +44,9 @@ public class BankBookDAO {
 	//bankbook table의 모든 데이트 조회 후 리턴
 	public List<BankBookDTO> getList(Pager pager)throws Exception{
 		
+		System.out.println("kind : "+pager.getKind());
+		System.out.println("search : "+pager.getSearch());
+
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	

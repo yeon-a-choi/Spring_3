@@ -6,9 +6,22 @@
 <!-- 통상적으로 풀패키지명으로 적음, 중복되면 안됨 -->
 <mapper namespace="com.ee.y3.bankbook.BankBookDAO">
 
-	<!-- getTotalCount -->
-	<select id="getTotalCount" resultType="Long">
+<select id="getTotalCount" resultType="Long" parameterType="Pager">
 		select count(booknumber) from bankbook
+		where 
+		<choose>
+			<when test="kind == 'BookName'">
+				bookname
+			</when>
+			<when test="kind == 'Rate'">
+				bookrate
+			</when>
+			
+			<otherwise>
+				booksale
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%' and booknumber >0
 	</select>
 
 	<!--  같은 Mapper안에 있는 애들끼리는 id가 중복되면 안됨 -->
@@ -31,7 +44,25 @@
 		
 		select * from
 			(select rownum R, N.* from
-				(select * from bankbook where bookNumber>0 order by bookNumber desc) N)
+				(select * from bankbook where
+					<choose>
+						<when test="kind=='BookName'">
+							bookname
+						</when>
+						
+						<when test="kind =='Rate'">
+							bookrate
+						</when>
+						
+						<otherwise>
+							booksale
+						</otherwise>
+					
+					</choose>
+					
+				
+				
+				  like '%' || #{search} || '%' and booknumber > 0 order by booknumber desc) N)
 		where R between #{startRow} and #{lastRow}	
 
 	
