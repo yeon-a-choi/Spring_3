@@ -3,83 +3,50 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 통상적으로 풀패키지명으로 적음, 중복되면 안됨 -->
-<mapper namespace="com.ee.y3.bankbook.BankBookDAO">
-
-<select id="getTotalCount" resultType="Long" parameterType="Pager">
-		select count(booknumber) from bankbook
+<mapper namespace="com.iu.s3.board.notice.NoticeDAO">
+	<select id="getTotalCount" resultType="Long" parameterType="Pager">
+		select count(num) from notice
 		where 
 		<choose>
-			<when test="kind == 'BookName'">
-				bookname
+			<when test="kind == 'Writer'">
+				writer
 			</when>
-			<when test="kind == 'Rate'">
-				bookrate
+			<when test="kind == 'Contents'">
+				contents
 			</when>
 			
 			<otherwise>
-				booksale
+				title
 			</otherwise>
 		</choose>
-		like '%'||#{search}||'%' and booknumber >0
+		like '%'||#{search}||'%' and num >0
 	</select>
 
-	<!--  같은 Mapper안에 있는 애들끼리는 id가 중복되면 안됨 -->
-	<!-- DAO에 있는 메서드명을 id로 사용 -->
-	<insert id="setWrite" parameterType="com.ee.y3.bankbook.BankBookDTO">
-													<!-- getter의 이름 -->
-		insert into bankbook values(bank_seq.nextval, #{bookName}, #{bookRate}, #{bookSale})		
-
-	</insert>
-	
-															<!-- resultType : 결과물을 BankBookDTO에 담아서 보냄 -->
-	<select id="getSelect" parameterType="com.ee.y3.bankbook.BankBookDTO" resultType="com.ee.y3.bankbook.BankBookDTO">
-												<!-- parameter로 넘겨준 변수명 -->
-		select * from bankbook where bookNumber = #{bookNumber}
-	
-	</select>
-	
-						<!-- resultType : 결과물을 BankBookDTO에 담아서 보냄/ 하나씩 보내면 DAO에서 List에 담음 -->
-	<select id="getList" parameterType="Pager" resultType="BankBookDTO">
-		
+	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
 		select * from
 			(select rownum R, N.* from
-				(select * from bankbook where
+				(select * from notice where
 					<choose>
-						<when test="kind=='BookName'">
-							bookname
+						<when test="kind=='Writer'">
+							writer
 						</when>
 						
-						<when test="kind =='Rate'">
-							bookrate
+						<when test="kind =='Contents'">
+							contents
 						</when>
 						
 						<otherwise>
-							booksale
+							title
 						</otherwise>
 					
 					</choose>
 					
-				
-				
-				  like '%' || #{search} || '%' and booknumber > 0 order by booknumber desc) N)
-		where R between #{startRow} and #{lastRow}	
-
-	
+				  like '%' || #{search} || '%' and num > 0 order by num desc) N)
+		where R between #{startRow} and #{lastRow}
 	</select>
 	
-															<!-- resultType이 없는경우? -->
-	<delete id="setDelete" parameterType="com.ee.y3.bankbook.BankBookDTO">
-		
-		delete bankbook where bookNumber = #{bookNumber}
-	
-	</delete>
-	
-	<update id="setUpdate" parameterType="com.ee.y3.bankbook.BankBookDTO">
-	
-		update bankbook set bookName=#{bookName}, bookRate=#{bookRate}, bookSale=#{bookSale} where bookNumber=#{bookNumber}
-	
-	</update>
+	<insert id="setInsert" parameterType="BoardDTO">
+		insert into notice values(notice_seq.nextval,#{title}, #{writer}, #{contents}, sysdate, 0)
+	</insert>
 
-</mapper>
-
+</mapper>  

@@ -10,16 +10,42 @@ import com.ee.y3.board.BoardService;
 import com.ee.y3.util.Pager;
 
 @Service
-public class QnaService implements BoardService{
+public class QnaService implements BoardService {
 	
 	@Autowired
 	private QnaDAO qnaDAO;
-	
-	//List
+
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return qnaDAO.getList(pager);
+		return null;
 	}
 
+	@Override
+	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int setInsert(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int setUpdate(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int setDelete(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+	
+	
 }

@@ -2,139 +2,59 @@ package com.ee.y3.board.notice;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ee.y3.board.BoardDTO;
 import com.ee.y3.util.Pager;
 
-
 @Controller
-@RequestMapping(value = "/notice/**")
+@RequestMapping("/notice/**")
 public class NoticeController {
 	
 	@Autowired
 	private NoticeService noticeService;
 	
-	//List
-	@RequestMapping(value="noticeList")
-	//@RequestParam(defaultValue="1") 값이 넘어오지않을 때 기본 값
-	public ModelAndView getList(Pager pager) throws Exception{
-		
-		ModelAndView mv = new ModelAndView();
-		
-		System.out.println(pager.getCurPage());
-		
-		List<BoardDTO> ar = noticeService.getList(pager);
-		//List<NoticeDTO> ar = noticeService.getList(curPage);
-		
-		mv.addObject("list", ar);
-		mv.addObject("board", "notice");
-		mv.setViewName("board/boardList");
-		
-		mv.addObject("pager", pager);
-		
-		return mv;
-		
-	}
-	
-	//Select
-	@RequestMapping(value="noticeSelect")
-	public ModelAndView getSelect(NoticeDTO noticeDTO) throws Exception{
-		
-		ModelAndView mv = new ModelAndView();
-		noticeDTO = noticeService.getSelect(noticeDTO);
-		
-		noticeDTO.getTitle();
-		
-		mv.addObject("notice", noticeDTO);
-		mv.setViewName("notice/noticeSelect");
-		
-		return mv;
-		
-	}
-	
-	//Update
-	//400 잘못된 요청 오류
-	@RequestMapping(value="noticeUpdate")
-	public void setUpdate(NoticeDTO noticeDTO, Model model) throws Exception{
-		
-		noticeDTO = noticeService.getSelect(noticeDTO);	
-		model.addAttribute("notice", noticeDTO);
-	}
-	
-	@RequestMapping(value="noticeUpdate", method=RequestMethod.POST)
-	public String setUpdate(NoticeDTO noticeDTO, HttpSession session) throws Exception{
-		
-		int result = noticeService.setUpdate(noticeDTO);		
-		System.out.println(result);
-		
-		//session에 있는 값을 가져오기때문에 수정 후 db에서 한번 더 값을 가져와야함. (덮어쓰기)
-		if(result>0) {
-			session.setAttribute("notice", noticeDTO);
-		}
-		
-		return "redirect:./noticeList";
-		
-	}
-	
-	
-	//Insert
-	@RequestMapping(value="noticeInsert")
+	@RequestMapping("noticeInsert")
 	public ModelAndView setInsert()throws Exception{
-		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/boardInsert");
 		mv.addObject("board", "notice");
-		
 		return mv;
-		
 	}
 	
-	@RequestMapping(value="noticeInsert", method=RequestMethod.POST)
-	public String setInsert(NoticeDTO noticeDTO, Model model)throws Exception{
-		
-		int result = noticeService.setInsert(noticeDTO);
+	@RequestMapping(value = "noticeInsert", method = RequestMethod.POST)
+	public String setInsert(BoardDTO boardDTO, Model model)throws Exception{
+		int result = noticeService.setInsert(boardDTO);
 		
 		String message="등록 실패";
-		String path = "./noticeList";
-		
 		
 		if(result>0) {
 			message="등록 성공";
-			path="../";
-			
 		}
-		
-		System.out.println(result);
 		model.addAttribute("msg", message);
-		model.addAttribute("path", path);
+		model.addAttribute("path", "./noticeList");
 		
 		return "common/commonResult";
 	}
 	
-	
-	//Delete
-	@RequestMapping(value="noticeDelete")
-	public String setDelete(NoticeDTO noticeDTO, HttpSession session) throws Exception{
+	@RequestMapping("noticeList")
+	public ModelAndView getList(Pager pager)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println(pager.getCurPage());
 		
-		int result = noticeService.setDelete(noticeDTO);	
-		System.out.println(result);
+		List<BoardDTO> ar = noticeService.getList(pager);
 		
-		//session에 있는 값을 가져오기때문에 수정 후 db에서 한번 더 값을 가져와야함. (덮어쓰기)
-		if(result>0) {
-			session.setAttribute("notice", noticeDTO);
-		}
-		
-		return "redirect:./noticeList";
-		
+		//List<NoticeDTO> ar = noticeService.getList(curPage);
+		mv.addObject("list", ar);
+		mv.setViewName("board/boardList");
+		mv.addObject("board", "notice");
+		mv.addObject("pager", pager);
+		return mv;
 	}
 
 }
