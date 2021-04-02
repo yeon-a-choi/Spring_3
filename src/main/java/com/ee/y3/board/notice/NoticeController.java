@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +20,7 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	//insert
 	@RequestMapping("noticeInsert")
 	public ModelAndView setInsert()throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -42,6 +44,7 @@ public class NoticeController {
 		return "common/commonResult";
 	}
 	
+	//list
 	@RequestMapping("noticeList")
 	public ModelAndView getList(Pager pager)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -55,6 +58,32 @@ public class NoticeController {
 		mv.addObject("board", "notice");
 		mv.addObject("pager", pager);
 		return mv;
+	}
+	
+	//select
+	@GetMapping("noticeSelect")
+	public ModelAndView getSelect(BoardDTO boardDTO) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		boardDTO = noticeService.getSelect(boardDTO);
+		mv.addObject("dto", boardDTO);
+		mv.addObject("board", "notice");
+		
+		mv.setViewName("board/boardSelect");
+		
+		return mv;
+		
+	}
+	
+	//Delete
+	@GetMapping("noticeDelete")
+	public String setDelete(BoardDTO boardDTO, Model model) throws Exception{
+		
+		int result = noticeService.setDelete(boardDTO);
+		
+		model.addAttribute("path", "./noticeList");
+		
+		return "board/boardList";
 	}
 
 }

@@ -16,11 +16,10 @@ public class NoticeService implements BoardService {
 	private NoticeDAO noticeDAO;
 	
 	
-	
 	@Override
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return noticeDAO.getSelect(boardDTO);
 	}
 
 
@@ -44,7 +43,7 @@ public class NoticeService implements BoardService {
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDAO.setDelete(boardDTO);
 	}
 
 

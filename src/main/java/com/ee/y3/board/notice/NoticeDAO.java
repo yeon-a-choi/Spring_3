@@ -16,7 +16,7 @@ public class NoticeDAO implements BoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private final String NAMESPACE="com.iu.s3.board.notice.NoticeDAO.";
+	private final String NAMESPACE="com.ee.y3.board.notice.NoticeDAO.";
 
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
@@ -33,7 +33,7 @@ public class NoticeDAO implements BoardDAO {
 	@Override
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE+"getSelect", boardDTO);
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class NoticeDAO implements BoardDAO {
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
 	}
 	
 	
