@@ -80,11 +80,12 @@ let phone = document.getElementById("phone");
 let email = document.getElementById("email");
 
 //이메일 인지 아닌지 확인하려 했으나 실패
-//.toString
-//let emailNum = email.lastIndexOf('@');
-//let emailCheck = email.substring(emailNum);
+/*
+.toString
+let emailNum = email.lastIndexOf('@');
+let emailCheck = email.substring(emailNum);*/
 
-console.log(emailNum);
+//console.log(emailNum);
 
 btn.addEventListener("click", function(){
 	//조건이 만족하면 서버로 보내고 만족하지 않으면 보내지않음.
@@ -109,10 +110,10 @@ btn.addEventListener("click", function(){
 		email.focus();
 	} else if(id.value != "" && id.value.length>5 && pw.value != "" && name.value != "" && phone.value != "" && email.value != ""){
 		//db로 값 넘기기 위해선 주석해제
-		//frm.submit();
+		frm.submit();
 		
 		//test용 alert
-		alert('회원가입 가능!');
+		//alert('회원가입 가능!');
 	}
 	
 	
@@ -121,13 +122,9 @@ btn.addEventListener("click", function(){
 
 /* ------------------- 위에 이어서 --------------------- */
 //강사님 코드
-let idCheckResult = false; //id check 결과
-let pwCheckResult = false; //pw check 결과
-let pwEqualResult = false; //pw equal 결과
-let etcResult = false;	   //name, email, phone 결과
+//let idCheckResult = false; //id check 결과
+//let pwCheckResult = false; //pw check 결과
+//let pwEqualResult = false; //pw equal 결과
+//let etcResult = false;	   //name, email, phone 결과
 
 //로 변수를 선언해서 값 넣어서 결과를 내셨음.
-
-
-
-

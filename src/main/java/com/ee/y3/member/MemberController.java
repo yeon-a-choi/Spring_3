@@ -1,5 +1,7 @@
 package com.ee.y3.member;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,12 +60,24 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberJoin", method=RequestMethod.POST)
-	public String memberJoin(MemberDTO memberDTO) throws Exception{
+	public String memberJoin(MemberDTO memberDTO, Model model) throws Exception{
 		
+		Random random = new Random();
 		int result = memberService.memberJoin(memberDTO);
+		
+		String message = "";
+		String path = "./memberJoin";
+		
+		if(result>0) {
+			message = "회원 가입 성공";
+			path="../";
+		}
+		model.addAttribute("msg", message);
+		model.addAttribute("path", path);
+		
 		System.out.println(result);
 		
-		return "redirect:../";
+		return "common/commonResult";
 	}
 	
 	

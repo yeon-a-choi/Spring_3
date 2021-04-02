@@ -5,6 +5,18 @@
 
 let all = document.getElementById("all");
 let check = document.getElementsByClassName("check");
+const btn =  document.getElementById("btn");
+
+
+btn.addEventListener("click", function(){
+	if(all.checked){
+		//이 주소로 이동
+		location.href="./memberJoin"; //주소창에 직접 치고 가는 것, GET
+		
+	}else{
+		alert("약관 동의는 필수 입니다.");
+	}
+});
 
 
 all.addEventListener("click", function(){

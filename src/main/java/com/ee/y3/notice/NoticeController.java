@@ -91,12 +91,25 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="noticeInsert", method=RequestMethod.POST)
-	public String setInsert(NoticeDTO noticeDTO)throws Exception{
+	public String setInsert(NoticeDTO noticeDTO, Model model)throws Exception{
 		
 		int result = noticeService.setInsert(noticeDTO);
-		System.out.println(result);
 		
-		return "redirect:./noticeList";
+		String message="등록 실패";
+		String path = "./noticeList";
+		
+		
+		if(result>0) {
+			message="등록 성공";
+			path="../";
+			
+		}
+		
+		System.out.println(result);
+		model.addAttribute("msg", message);
+		model.addAttribute("path", path);
+		
+		return "common/commonResult";
 	}
 	
 	

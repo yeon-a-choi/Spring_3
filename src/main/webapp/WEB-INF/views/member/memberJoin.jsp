@@ -33,7 +33,7 @@
 		<br>
 		<h2>Member Join Page</h2>
 		
-		<form  id="frm" action="./memberJoin" method="post">
+		<form id="frm" action="./memberJoin" method="post">
 			<!-- ID -->
 			<div class="form-group">
 				<label for="id">ID</label> 
@@ -96,7 +96,7 @@
 		
 	</div>
 	
-	<script type="text/javascript" src="../resources/js/memberJoin.js"></script>
+	<script type="text/javascript" src="../resources/js/memberJoin.js?var=1"></script>
 
 </body>
 </html>

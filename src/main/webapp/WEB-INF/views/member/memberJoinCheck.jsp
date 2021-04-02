@@ -32,8 +32,8 @@
 		
 		<!-- 큰 글자 -->
 		<div class="jumbotron">
-			<h1>Bootstrap Tutorial</h1>
-			<p>개인정보제공동의</p>
+			<h1>개인정보제공동의</h1>
+			<p>개인정보제공을 하는 것에 동의하십니까?</p>
 		</div>
 		
 		<!-- -------------------- -->
@@ -47,8 +47,8 @@
 		
 		<!-- 큰 글자 -->
 		<div class="jumbotron">
-			<h1>Bootstrap Tutorial</h1>
-			<p>Bootstrap is the most popular HTML, CSS...</p>
+			<h1>개인정보 2년 보관</h1>
+			<p>향후 2년간 개인정보를 보관하는 것에 동의하십니까?</p>
 		</div>
 		
 		
@@ -87,7 +87,7 @@
 		</div>
 
 		
-		<button class="btn-danger">JOIN</button>
+		<button class="btn-danger" id="btn">JOIN</button>
 		<!-- <button class="btn-danger" onclick="check()">JOIN</button>-->
 		<!-- src="../resources/js/memberJoinCheck.js" -->
 		<script type="text/javascript" src="../resources/js/memberJoinCheck.js"> </script>
