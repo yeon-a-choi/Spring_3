@@ -1,4 +1,4 @@
-package com.ee.y3.notice;
+package com.ee.y3.board.notice;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ee.y3.board.BoardDTO;
 import com.ee.y3.util.Pager;
 
 
@@ -31,11 +32,12 @@ public class NoticeController {
 		
 		System.out.println(pager.getCurPage());
 		
-		List<NoticeDTO> ar = noticeService.getList(pager);
+		List<BoardDTO> ar = noticeService.getList(pager);
 		//List<NoticeDTO> ar = noticeService.getList(curPage);
 		
 		mv.addObject("list", ar);
-		mv.setViewName("notice/noticeList");
+		mv.addObject("board", "notice");
+		mv.setViewName("board/boardList");
 		
 		mv.addObject("pager", pager);
 		
@@ -86,7 +88,13 @@ public class NoticeController {
 	
 	//Insert
 	@RequestMapping(value="noticeInsert")
-	public void setInsert()throws Exception{
+	public ModelAndView setInsert()throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/boardInsert");
+		mv.addObject("board", "notice");
+		
+		return mv;
 		
 	}
 	

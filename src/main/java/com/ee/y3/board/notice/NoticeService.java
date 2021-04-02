@@ -1,20 +1,23 @@
-package com.ee.y3.notice;
+package com.ee.y3.board.notice;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ee.y3.board.BoardDTO;
+import com.ee.y3.board.BoardService;
 import com.ee.y3.util.Pager;
 
 @Service
-public class NoticeService {
+public class NoticeService implements BoardService{
 	
 	@Autowired
 	private NoticeDAO noticeDAO;
 
 	//List
-	public List<NoticeDTO> getList(Pager pager) throws Exception{
+	@Override
+	public List<BoardDTO> getList(Pager pager) throws Exception {
 		//방법 1
 		//Pager pager = new Pager();
 		//long perPage = 10L;
@@ -93,7 +96,6 @@ public class NoticeService {
 		System.out.println("CurBlock : "+curBlock);
 		
 		return noticeDAO.getList(pager);
-		
 	}
 	
 	

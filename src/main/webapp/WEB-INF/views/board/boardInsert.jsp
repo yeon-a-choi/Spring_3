@@ -8,7 +8,7 @@
 
 <c:import url="../template/bootStrap.jsp"></c:import>
 
-<title>Notice Insert Page</title>
+<title>${board} Insert Page</title>
 </head>
 <body>
 
@@ -17,9 +17,9 @@
 	<div class="container">
 
 		<br>
-		<h2>Notice Insert Page</h2>
+		<h2>${board} Insert Page</h2>
 
-		<form id="form" action="./noticeInsert" method="post">
+		<form id="form" action="./${board}Insert" method="post">
 			<!-- Title -->
 			<div class="form-group">
 				<label for="title">Title</label> <input type="text" class="form-control"

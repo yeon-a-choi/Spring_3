@@ -7,8 +7,8 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ee.y3.notice.NoticeDAO;
-import com.ee.y3.notice.NoticeDTO;
+import com.ee.y3.board.notice.NoticeDAO;
+import com.ee.y3.board.notice.NoticeDTO;
 import com.ee.y3.util.Pager;
 
 

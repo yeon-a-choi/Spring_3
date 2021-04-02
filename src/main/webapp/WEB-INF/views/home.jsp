@@ -26,7 +26,7 @@
 	<button id="btn">CILCK</button>
 	<button id="btn2">CILCK2</button>
 
-	<h1>Version 2</h1>
+	<h1>Version 1</h1>
 
 	<script type="text/javascript">
 	

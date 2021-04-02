@@ -1,8 +1,8 @@
-package com.ee.y3.notice;
+package com.ee.y3.board;
 
 import java.util.Date;
 
-public class NoticeDTO {
+public class BoardDTO {
 	
 	private long num;
 	private String title;
@@ -49,6 +49,5 @@ public class NoticeDTO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-		
 
 }

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ee.y3.bankbook.BankBookDAO;
 import com.ee.y3.bankbook.BankBookDTO;
-import com.ee.y3.notice.NoticeDTO;
+import com.ee.y3.board.notice.NoticeDTO;
 import com.ee.y3.util.Pager;
 
 public class BankBookDAOTest extends MyAbstractTest{
