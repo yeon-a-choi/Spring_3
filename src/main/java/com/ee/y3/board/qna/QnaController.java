@@ -19,6 +19,7 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	//list
 	@GetMapping("qnaList")
 	public ModelAndView getList(Pager pager) throws Exception{
 		
@@ -28,10 +29,12 @@ public class QnaController {
 		mv.addObject("list", ar);
 		mv.addObject("board", "qna");
 		mv.setViewName("board/boardList");
+		mv.addObject("pager", pager);
 		
 		return mv;
 	}
 	
+	//insert
 	@GetMapping("qnaInsert")
 	public ModelAndView setInsert(Pager pager) throws Exception{
 		
@@ -54,6 +57,8 @@ public class QnaController {
 		
 	}
 	
+	
+	//select
 	@GetMapping("qnaSelect")
 	public ModelAndView getSelect(BoardDTO boardDTO) throws Exception{
 		
@@ -68,13 +73,31 @@ public class QnaController {
 		return mv;
 	}
 	
+	
+	//reply
 	@GetMapping("qnaReply")
 	public ModelAndView setReply() throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		
+		//movelandview는 생명주기가 request와 같음
+		
 		mv.setViewName("board/boardReply");
 		mv.addObject("board", "qna");
+		//mv.addObject("dto", boardDTO);
+		
+		return mv;
+		
+	}
+	
+	@PostMapping("qnaReply")
+	public ModelAndView setReply(QnaDTO qnaDTO) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		int result = qnaService.setReply(qnaDTO);
+		
+		mv.setViewName("redirect:./qnaList");
 		
 		return mv;
 		

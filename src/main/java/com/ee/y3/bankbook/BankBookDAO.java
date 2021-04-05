@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ee.y3.util.Pager;
+import com.ee.y3.util.Pager_backup;
 
 @Repository
 public class BankBookDAO {
@@ -16,7 +16,7 @@ public class BankBookDAO {
 	private final String  NAMESPACE = "com.ee.y3.bankbook.BankBookDAO."; 
 	
 	//count
-	public Long getTotalCount(Pager pager)throws Exception{
+	public Long getTotalCount(Pager_backup pager)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
@@ -42,7 +42,7 @@ public class BankBookDAO {
 
 	//getList
 	//bankbook table의 모든 데이트 조회 후 리턴
-	public List<BankBookDTO> getList(Pager pager)throws Exception{
+	public List<BankBookDTO> getList(Pager_backup pager)throws Exception{
 		
 		System.out.println("kind : "+pager.getKind());
 		System.out.println("search : "+pager.getSearch());

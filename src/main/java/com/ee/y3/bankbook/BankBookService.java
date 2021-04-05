@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ee.y3.util.Pager;
+import com.ee.y3.util.Pager_backup;
 
 @Service
 public class BankBookService {
@@ -15,7 +15,7 @@ public class BankBookService {
 	private BankBookDAO bankBookDAO;
 
 	//List
-	public List<BankBookDTO> getList(Pager pager) throws Exception {
+	public List<BankBookDTO> getList(Pager_backup pager) throws Exception {
 		
 		int perPage = 10; //한 페이지에 보여줄 글의 갯수
 		int perBlock = 5; //한 블럭당 보여줄 숫자의 갯수

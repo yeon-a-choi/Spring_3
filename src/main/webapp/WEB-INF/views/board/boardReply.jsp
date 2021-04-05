@@ -20,6 +20,9 @@
 		<h2>${board} Insert Page</h2>
 
 		<form id="form" action="./${board}Reply" method="post">
+			
+			<input type="hidden" name="num" value="${param.num}">
+			
 			<!-- Title -->
 			<div class="form-group">
 				<label for="title">Title</label> <input type="text" class="form-control"

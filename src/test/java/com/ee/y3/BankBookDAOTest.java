@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.ee.y3.bankbook.BankBookDAO;
 import com.ee.y3.bankbook.BankBookDTO;
 import com.ee.y3.board.notice.NoticeDTO;
-import com.ee.y3.util.Pager;
+import com.ee.y3.util.Pager_backup;
 
 public class BankBookDAOTest extends MyAbstractTest{
 	
@@ -54,7 +54,7 @@ public class BankBookDAOTest extends MyAbstractTest{
 	
 	
 	//@Test
-	public void getListTest(Pager pager) throws Exception{
+	public void getListTest(Pager_backup pager) throws Exception{
 		
 		List<BankBookDTO> ar = bankBookDAO.getList(pager);
 		

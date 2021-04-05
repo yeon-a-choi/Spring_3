@@ -76,14 +76,17 @@ public class NoticeController {
 	}
 	
 	//Delete
-	@GetMapping("noticeDelete")
-	public String setDelete(BoardDTO boardDTO, Model model) throws Exception{
+	@RequestMapping(value = "noticeDelete")
+	public ModelAndView setDelete(BoardDTO boardDTO) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
 		
 		int result = noticeService.setDelete(boardDTO);
 		
-		model.addAttribute("path", "board/boardList");
+		mv.setViewName("board/boardList");
+		//model.addAttribute("path", "./noticeList");
 		
-		return "board/boardList";
+		return mv;
 	}
 
 }

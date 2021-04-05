@@ -28,8 +28,8 @@
 					<th>No</th>
 					<th>Title</th>
 					<th>Writer</th>
-					<th>Hit</th>
 					<th>RegDate</th>
+					<th>Hit</th>
 
 				</tr>
 			</thead>
@@ -48,8 +48,8 @@
 						${dto.title}
 						</a></td>
 						<td>${dto.writer}</td>
-						<td>${dto.hit}</td>
 						<td>${dto.regdate}</td>
+						<td>${dto.hit}</td>
 
 					</tr>
 				</c:forEach>
@@ -61,23 +61,24 @@
 	</div>
 	
 	
-	<%-- <div class="container">
+	<!-- Pageing -->
+	<div class="container">
 		<!-- pageing -->
 		<ul class="pagination">
 
 			<c:if test="${pager.pre}">
 				<li class="page-item"><a class="page-link"
-					href="./noticeList?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">Previous</a></li>
+					href="./${board}List?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">Previous</a></li>
 			</c:if>
 
 			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 				<li class="page-item"><a class="page-link"
-					href="./noticeList?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+					href="./${board}List?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 			</c:forEach>
 
 			<c:if test="${pager.next}">
 				<li class="page-item"><a class="page-link"
-					href="./noticeList?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a></li>
+					href="./${board}List?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a></li>
 			</c:if>
 
 		</ul>
@@ -86,7 +87,7 @@
 
 		<div class="input-group mt-3 mb-3">
 
-			<form action="./noticeList" class="form-inline">
+			<form action="./${board}List" class="form-inline">
 
 				<div class="input-group-prepend">
 
@@ -106,7 +107,7 @@
 
 			</form>
 
-		</div> --%>
+		</div>
 
 		<c:catch>
 			<!-- 로그인을 안한다면 member.id가 null이므로 오류가 뜸. -->

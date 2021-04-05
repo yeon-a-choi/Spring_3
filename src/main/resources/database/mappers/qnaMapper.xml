@@ -7,20 +7,78 @@
     
 <mapper namespace="com.ee.y3.board.qna.QnaDAO">
 
-	<select id="getList" resultType="QnaDTO">
-		select * from qna order by num desc
+	<!-- total count -->
+	<select id="getTotalCount" resultType="Long" parameterType="Pager">
+		select count(num) from qna
+		where 
+		<choose>
+			<when test="kind == 'Writer'">
+				writer
+			</when>
+			<when test="kind == 'Contents'">
+				contents
+			</when>
+			
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%' and num >0
 	</select>
 	
+	
+	<!-- List -->
+	<select id="getList" resultType="QnaDTO" parameterType="Pager">
+		select * from
+			(select rownum R, Q.* from
+				(select * from qna where
+				
+				<choose>
+						<when test="kind=='Title'">
+							title
+						</when>
+						
+						<when test="kind =='Writer'">
+							writer
+						</when>
+						
+						<otherwise>
+							contents
+						</otherwise>
+					
+				</choose>
+								
+				  like '%' || #{search} || '%' and num > 0 order by ref desc, step asc) Q)
+		where R between #{startRow} and #{lastRow}
+	</select>
+	
+	
+	
+	<!-- insert -->
 	<insert id="setInsert" parameterType="BoardDTO">
 		insert into qna values(qna_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0, qna_seq.currval, 0, 0) 
 	</insert>
 	
+	
+	<!-- select -->
 	<select id="getSelect" parameterType="BoardDTO" resultType="QnaDTO">
 		select * from qna where num=#{num}
 	</select>
 	
+	<!-- hit -->
 	<update id="setHitUpdate" parameterType="BoardDTO">
 		update qna set hit=hit+1 where num=#{num}
 	</update>
+	
+	
+	<!-- reply update -->
+	<update id="setReplyUpdate" parameterType="QnaDTO">
+		update qna set step=step+1 where ref=#{ref} and step>#{step}
+	</update>
+	
+	<!-- reply -->
+	<insert id="setReply" parameterType="QnaDTO">
+		insert into qna values(qna_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0, #{ref}, #{step}, #{depth})
+	</insert>
 
 </mapper>
