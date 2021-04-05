@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,5 +41,44 @@ public class QnaController {
 		
 		return mv;
 	}
+	
+	@PostMapping("qnaInsert")
+	public ModelAndView setInsert(BoardDTO boardDTO) throws Exception{
+		int result = qnaService.setInsert(boardDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("redirect:./qnaList");
+		
+		return mv;
+		
+	}
+	
+	@GetMapping("qnaSelect")
+	public ModelAndView getSelect(BoardDTO boardDTO) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		boardDTO = qnaService.getSelect(boardDTO);
+		
+		mv.addObject("board", "qna");
+		mv.addObject("dto", boardDTO);
+		mv.setViewName("board/boardSelect");
+	
+		return mv;
+	}
+	
+	@GetMapping("qnaReply")
+	public ModelAndView setReply() throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("board/boardReply");
+		mv.addObject("board", "qna");
+		
+		return mv;
+		
+	}
+	
 	
 }

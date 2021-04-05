@@ -24,7 +24,9 @@
 		
 		<a href="./${board}Update?num=${dto.num}" class="btn btn-success">Update</a>
 		<a href="./${board}Delete?num=${dto.num}" class="btn btn-danger">Delete</a>
-	
+		<c:if test="${board ne 'notice'}">
+			<a href="./${board}Reply?num=${dto.num}" class="btn btn-info">Reply</a>
+		</c:if>
 	</div>
 
 </body>

@@ -81,7 +81,7 @@ public class NoticeController {
 		
 		int result = noticeService.setDelete(boardDTO);
 		
-		model.addAttribute("path", "./noticeList");
+		model.addAttribute("path", "board/boardList");
 		
 		return "board/boardList";
 	}

@@ -19,7 +19,7 @@
 		<br>
 		<h2>${board} Insert Page</h2>
 
-		<form id="form" action="./${board}Insert" method="post">
+		<form id="form" action="./${board}Reply" method="post">
 			<!-- Title -->
 			<div class="form-group">
 				<label for="title">Title</label> <input type="text" class="form-control"

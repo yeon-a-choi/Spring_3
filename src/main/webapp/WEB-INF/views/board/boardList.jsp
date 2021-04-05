@@ -37,14 +37,19 @@
 			<tbody>
 				<!-- list에서 하나 꺼내서 dto에 넣자 -->
 				<!-- c:forEach는 for문 기억!-->
-				<c:forEach items="${list}" var="notice">
+				<c:forEach items="${list}" var="dto">
 					<tr>
 						<!-- 값이 잘 넘어가는지 주소를 보고 확인  -->
-						<td>${notice.num}</td>
-						<td><a href="./${board}Select?num=${notice.num}">${notice.title}</a></td>
-						<td>${notice.writer}</td>
-						<td>${notice.hit}</td>
-						<td>${notice.regdate}</td>
+						<td>${dto.num}</td>
+						<td><a href="./${board}Select?num=${dto.num}">
+						<c:if test="${board eq 'qna'}">
+						<c:forEach begin="1" end="${dto.depth}">--</c:forEach>
+						</c:if>
+						${dto.title}
+						</a></td>
+						<td>${dto.writer}</td>
+						<td>${dto.hit}</td>
+						<td>${dto.regdate}</td>
 
 					</tr>
 				</c:forEach>

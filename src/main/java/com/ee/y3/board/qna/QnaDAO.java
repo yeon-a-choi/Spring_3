@@ -13,10 +13,15 @@ import com.ee.y3.util.Pager;
 @Repository
 public class QnaDAO implements BoardDAO{
 	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	private final String NAMESPACE="com.ee.y3.board.qna.QnaDAO.";
+	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 
 	@Override
@@ -28,19 +33,19 @@ public class QnaDAO implements BoardDAO{
 	@Override
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE+"getSelect", boardDTO);
 	}
 
 	@Override
 	public int setHitUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(NAMESPACE+"setHitUpdate", boardDTO);
 	}
 
 	@Override
 	public int setInsert(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(NAMESPACE+"setInsert", boardDTO);
 	}
 
 	@Override
@@ -55,10 +60,7 @@ public class QnaDAO implements BoardDAO{
 		return 0;
 	}
 
-	@Autowired
-	private SqlSession sqlSession;
-	
-	private final String NAMESPACE="com.iu.s3.board.qna.QnaDAO.";
+
 	
 	
 
