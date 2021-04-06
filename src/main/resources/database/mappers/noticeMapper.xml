@@ -70,6 +70,11 @@
 	<delete id="setDelete" parameterType="BoardDTO">
 		delete notice where num = #{num}
 	</delete>
+	
+	<!-- 공지 조회수 -->
+	<update id="setHitUpdate" parameterType="BoardDTO">
+		update notice set hit=hit+1 where num=#{num}
+	</update>
 
 
 </mapper>

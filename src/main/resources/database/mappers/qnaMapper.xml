@@ -65,6 +65,17 @@
 		select * from qna where num=#{num}
 	</select>
 	
+	
+	<!-- delete -->
+	<delete id="setDelete" parameterType="BoardDTO">
+		delete qna where num=#{num}
+	</delete>
+	
+	<!-- Update -->
+	<update id="setUpdate" parameterType="BoardDTO">
+		update qna set title = #{title}, writer = #{writer}, contents = #{contents}, hit = #{hit}, regdate = sysdate where num = #{num}
+	</update>
+	
 	<!-- hit -->
 	<update id="setHitUpdate" parameterType="BoardDTO">
 		update qna set hit=hit+1 where num=#{num}

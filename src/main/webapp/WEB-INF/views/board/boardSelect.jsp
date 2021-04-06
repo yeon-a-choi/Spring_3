@@ -23,12 +23,44 @@
 		<h3>Contents : ${dto.contents}</h3>
 		
 		<a href="./${board}Update?num=${dto.num}" class="btn btn-success">Update</a>
-		<a href="./${board}Delete?num=${dto.num}" class="btn btn-danger">Delete</a>
+		<a href="#" id="del" class="btn btn-danger">Delete</a>
+		<!-- ./${board}Delete?num=${dto.num} -->
+		
+
 		
 		<c:if test="${board ne 'notice'}">
 			<a href="./${board}Reply?num=${dto.num}" class="btn btn-info">Reply</a>
 		</c:if>
+		
+		
+		<form action="./${board}Delete" id="frm">
+			<input type="hidden" name="num" value="${dto.num}">	
+		</form>
+		
+		
 	</div>
+	
 
 </body>
+
+<script type="text/javascript">
+	const del = document.getElementById("del");
+	const frm = document.getElementById("frm");
+	
+	del.addEventListener("click", function(){
+		
+		let result = confirm("삭제하시겠습니까?");
+		
+		if(result){
+			//location.href="./${board}Delete?num=${dto.num}";	
+			//frm.method="post";
+			
+			frm.setAttribute("method", "post");
+			
+			frm.submit();
+		}
+		
+	});
+	
+</script>
 </html>

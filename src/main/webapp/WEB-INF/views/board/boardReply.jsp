@@ -8,7 +8,7 @@
 
 <c:import url="../template/bootStrap.jsp"></c:import>
 
-<title>${board} Insert Page</title>
+<title>${board} Reply Page</title>
 </head>
 <body>
 
@@ -17,7 +17,7 @@
 	<div class="container">
 
 		<br>
-		<h2>${board} Insert Page</h2>
+		<h2>${board} Reply Page</h2>
 
 		<form id="form" action="./${board}Reply" method="post">
 			
