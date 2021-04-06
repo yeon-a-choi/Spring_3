@@ -22,7 +22,7 @@
 		<form id="form" action="./${board}Insert" method="post">
 			<!-- Title -->
 			<div class="form-group">
-				<label for="title">Title</label> <input type="text" class="form-control"
+				<label for="title">Title</label> <input type="text" class="form-control myCheck"
 					id="title" name="title" aria-describedby="titleHelp">
 			</div>
 
@@ -30,22 +30,22 @@
 			<!-- Writer -->
 			<div class="form-group">
 				<label for="writer">Writer</label> <input type="text"
-					class="form-control" readonly="readonly" id="writer" name="writer" value="${member.id}">
+					class="form-control myCheck" readonly="readonly" id="writer" name="writer" value="${member.id}">
 			</div>
 
 
 			<!-- Contents -->
 			<div class="form-group">
 				<label for="contents">Contents</label> 
-				<textarea class="form-control" rows="5" name="contents" id="contents"></textarea>
+				<textarea class="form-control myCheck" rows="5" name="contents" id="contents"></textarea>
 			</div>
 			
-    		<input type="submit" value="WRITE" class="btn btn-primary" id="btn">
+    		<input type="button" value="WRITE" class="btn btn-primary" id="btn">
 
 		</form>
 
 	</div>
-	<!-- <script type="text/javascript" src="../resources/js/insertCheck.js"></script> -->
+	<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
 	
 
 </body>

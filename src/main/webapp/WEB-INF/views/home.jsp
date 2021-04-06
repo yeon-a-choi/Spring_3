@@ -22,34 +22,35 @@
 </head>
 <body>
 
-	<button onclick="go()">BUTTON</button>
-	<button id="btn">CILCK</button>
-	<button id="btn2">CILCK2</button>
+	<button class="b">BUTTON</button>
+	<button id="btn" class="b">CILCK</button>
+	<button id="btn2" class="b">CILCK2</button>
 
-	<h1>Version 1</h1>
+	<h1 id="t">Version 1</h1>
+
+
+	<ol id="result">
+		<li>A</li>
+	</ol>
+	
+	
+	<select id="mon">
+	</select>
+
 
 	<script type="text/javascript">
-	
-		let btn = document.getElementById("btn");
-		let btn2 = document.getElementById("btn2");
-		
-		//btn2.addEventListener("click", go);
-		btn2.addEventListener("click", function(){
-			alert("btn2");
-			go();
+			
+		$("#btn2").click(function(){
+			for(let i=1; i<13; i++){
+				$("#mon").append('<option>'+i+'</option>');
+			}
+			
+			// append
+			// 기존의 내용 끝에 추가. 계속 누르면 기존의 내용을 지워주지 않고 계속 끝에 추가
+			
+			//$("#result").prepend('<a href="#">Go</a>');
 		});
 		
-		
-		//btn.onclick=go;
-		btn.onclick = function() {
-			alert("익명함수");
-			go();
-		}
-		
-		function go() {
-			alert("hello");
-		}
-	
 	</script>
 
 	<c:import url="./template/header.jsp"></c:import>

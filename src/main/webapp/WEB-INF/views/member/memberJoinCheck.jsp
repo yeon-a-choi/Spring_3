@@ -90,7 +90,7 @@
 		<button class="btn-danger" id="btn">JOIN</button>
 		<!-- <button class="btn-danger" onclick="check()">JOIN</button>-->
 		<!-- src="../resources/js/memberJoinCheck.js" -->
-		<script type="text/javascript" src="../resources/js/memberJoinCheck.js"> </script>
+		<script type="text/javascript" src="../resources/jquery/memberJoinCheck2.js"> </script>
 	
 	</div>
 	
