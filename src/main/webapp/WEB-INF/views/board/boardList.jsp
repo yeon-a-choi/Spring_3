@@ -67,18 +67,20 @@
 		<ul class="pagination">
 
 			<c:if test="${pager.pre}">
-				<li class="page-item"><a class="page-link"
-					href="./${board}List?curPage=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}">Previous</a></li>
+				<li class="page-item"><a class="page-link p"
+					href="#" title="${pager.startNum-1}">Previous</a></li>
 			</c:if>
-
+					<!-- ${pager.startNum-1} -->
 			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-				<li class="page-item"><a class="page-link"
-					href="./${board}List?curPage=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
+				<li class="page-item"><a class="page-link p" href="#" title="${i}">
+					${i}
+				</a></li>
+				<!-- ./${board}List?curPage=${i}&kind=${pager.kind}&search=${pager.search} -->
 			</c:forEach>
 
 			<c:if test="${pager.next}">
-				<li class="page-item"><a class="page-link"
-					href="./${board}List?curPage=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}">Next</a></li>
+				<li class="page-item"><a class="page-link p"
+					href="#" title="${pager.lastNum+1}">Next</a></li>
 			</c:if>
 
 		</ul>
@@ -87,18 +89,20 @@
 
 		<div class="input-group mt-3 mb-3">
 
-			<form action="./${board}List" class="form-inline">
+			<form id="form" action="./${board}List" class="form-inline">
+			
+				<input type="hidden" name="curPage" value="1" id="curPage">
 
 				<div class="input-group-prepend">
 
-					<select class="form-control" name="kind" id="sel1">
-						<option>Title</option>
-						<option>Contents</option>
-						<option>Writer</option>
+					<select class="form-control" name="kind" id="kind">
+						<option class="sel">Title</option>
+						<option class="sel">Contents</option>
+						<option class="sel">Writer</option>
 					</select>
 
 				</div>
-				<input type="text" class="form-control" name="search"
+				<input type="text" class="form-control" name="search" id="search" value="${pager.search}"
 					placeholder="검색어는 한글로 입력">
 
 				<div class="input-group-append">
@@ -117,7 +121,57 @@
 			</c:if>
 		</c:catch>
 
-
-
 </body>
+
+<script type="text/javascript">
+
+	//너무어려움...
+	//3번방법
+	let kind = '${pager.kind}';
+	
+	$(".sel").each(function(){
+		let t = $(this).text();
+	
+		if(t == kind){
+			$(this).prop("selected", true);
+		}
+	});
+	
+	
+	$(".p").click(function(){
+		
+		let curPage = $(this).attr("title");	
+		let search = '${pager.search}';
+		
+		$("#curPage").val(curPage);
+		
+		$("#form").submit();
+		
+	/*
+	//2번 방법
+	$(".p").click(function(){
+		
+		let curPage = $(this).attr("title");	
+		let search = '${pager.search}';
+		let kind = '${pager.kind}';
+		
+		$("#curPage").val(curPage);
+		$("#kind").val(kind);
+		$("#search").val(search);
+		
+		$("#form").submit(); 
+		
+	}); */
+		
+	//1번 방법
+	/*
+	$(".p").click(function(){
+		location.href="./${board}List?curPage="+curPage+"&kind=${pager.kind}&search=${pager.search}";
+	});*/
+	
+	
+	});
+	
+</script>
+
 </html>
