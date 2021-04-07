@@ -72,7 +72,7 @@ public class MemberController {
 		System.out.println(avatar.isEmpty());				//파일의 존재 유무
 
 		
-		String message = "";
+		String message = "회원가입 실패";
 		String path = "./memberJoin";
 		
 		if(result>0) {
