@@ -45,6 +45,9 @@
 	</select>
 	 -->
 	
+	<insert id = "setFileInsert" parameterType="MemberFileDTO">
+		insert into memberFile values(fn_seq.nextval, #{id}, #{fileName}, #{OrigineName})
+	</insert>
 
 
 

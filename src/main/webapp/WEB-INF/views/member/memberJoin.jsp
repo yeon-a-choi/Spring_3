@@ -97,13 +97,13 @@
 			<!-- input type으로 만든 버튼은 form 내부/외부 둘 다 작동안함 -->
 			<!-- <input type="button" value="JOIN" class="btn btn-primary">  -->
 			
-			<input type="button" value="JOIN" id="btn" class="btn btn-primary">
-			
+			<input type="submit" value="JOIN" id="btn" class="btn btn-primary">
+			<!-- button -->
 		</form>
 		
 	</div>
 	
-	<script type="text/javascript" src="../resources/js/memberJoin.js?var=2"></script>
+	<!-- <script type="text/javascript" src="../resources/js/memberJoin.js?var=2"></script> -->
 
 </body>
 </html>
