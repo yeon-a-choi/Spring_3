@@ -91,6 +91,7 @@ btn.addEventListener("click", function(){
 	//조건이 만족하면 서버로 보내고 만족하지 않으면 보내지않음.
 	let frm = document.getElementById("frm");
 	
+	/*
 	if(id.value == "" || id.value.length<6){
 		alert("id를 입력하지않았거나, id가 6글자보다 작습니다.");
 		//focus를 사용해서 입력하지 않았거나, 올바르지 않은 정보 입력 시 해당 input칸으로 이동
@@ -110,11 +111,17 @@ btn.addEventListener("click", function(){
 		email.focus();
 	} else if(id.value != "" && id.value.length>5 && pw.value != "" && name.value != "" && phone.value != "" && email.value != ""){
 		//db로 값 넘기기 위해선 주석해제
-		frm.submit();
+		frm.submit(); 
+	}*/ 
+		if(id.value != "" && id.value.length>5 && pw.value != "" && name.value != "" && phone.value != "" && email.value != ""){
+			frm.submit();
+		}else{
+			alert("회원가입실패!");
+		}
 		
 		//test용 alert
 		//alert('회원가입 가능!');
-	}
+	
 	
 	
 });

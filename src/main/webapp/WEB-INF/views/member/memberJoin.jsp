@@ -103,7 +103,7 @@
 		
 	</div>
 	
-	<script type="text/javascript" src="../resources/js/memberJoin.js?var=1"></script>
+	<script type="text/javascript" src="../resources/js/memberJoin.js?var=2"></script>
 
 </body>
 </html>
