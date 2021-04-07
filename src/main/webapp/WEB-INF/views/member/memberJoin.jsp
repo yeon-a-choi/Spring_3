@@ -33,7 +33,7 @@
 		<br>
 		<h2>Member Join Page</h2>
 		
-		<form id="frm" action="./memberJoin" method="post">
+		<form id="frm" action="./memberJoin" method="post" enctype="multipart/form-data">
 			<!-- ID -->
 			<div class="form-group">
 				<label for="id">ID</label> 
@@ -81,6 +81,13 @@
 			<div class="form-group">
 				<label for="email">EMAIL</label> 
 				<input type="text" class="form-control" id="email" name="email">
+				<!-- 비어 있으면 X -->
+			</div>
+			
+			
+			<div class="form-group">
+				<label for="avatar">Avatar</label> 
+				<input type="file" class="form-control etc" id="avatar" name="avatar">
 				<!-- 비어 있으면 X -->
 			</div>
 			

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -60,10 +61,16 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberJoin", method=RequestMethod.POST)
-	public String memberJoin(MemberDTO memberDTO, Model model) throws Exception{
+	public String memberJoin(MemberDTO memberDTO, MultipartFile avatar, Model model) throws Exception{
 		
-		Random random = new Random();
-		int result = memberService.memberJoin(memberDTO);
+		
+		int result = memberService.memberJoin(memberDTO, avatar);
+		
+		System.out.println(avatar.getName());				//파라미터명
+		System.out.println(avatar.getOriginalFilename());	//upload 할 때 파일명
+		System.out.println(avatar.getSize());				//파일의 크기(BYTE)
+		System.out.println(avatar.isEmpty());				//파일의 존재 유무
+
 		
 		String message = "";
 		String path = "./memberJoin";

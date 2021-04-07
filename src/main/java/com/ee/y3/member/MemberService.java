@@ -2,6 +2,7 @@ package com.ee.y3.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class MemberService {
@@ -15,10 +16,11 @@ public class MemberService {
 	}
 	
 	//Join
-	public int memberJoin(MemberDTO memberDTO) throws Exception{
-		System.out.println(memberDTO.getId());
+	public int memberJoin(MemberDTO memberDTO, MultipartFile avatar) throws Exception{
+		//1. 저장할 폴더 지정
 		
-		return memberDAO.memberJoin(memberDTO);
+		//return memberDAO.memberJoin(memberDTO);
+		return 0;
 		
 	}
 	
