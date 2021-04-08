@@ -20,11 +20,17 @@ public class MemberService {
 	
 	//Login
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception{
-		return memberDAO.memberLogin(memberDTO);
+		
+		memberDTO = memberDAO.memberLogin(memberDTO);
+		//MemberFileDTO memberFileDTO = memberDAO.memberLoginFile(memberDTO);
+		
+		//memberDTO.setMemberFileDTO(memberFileDTO);
+		return memberDTO;
+		
 	}
 	
 	//Join
-	public int memberJoin(MemberDTO memberDTO, MultipartFile avatar, HttpSession session) throws Exception{
+	public int memberJoin(MemberDTO memberDTO, MultipartFile avatar, HttpSession session) throws Exception{	
 		
 		String fileName = fileManager.save("member", avatar, session);
 		

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- 스키마 -->
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -12,7 +11,9 @@
 	<!-- login  -->										<!-- resultType : com.ee.y3.member.MemberDTO받아서 하나씩 넘기기? -->
 	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
 
-		select * from member where id = #{id} and pw = #{pw}
+		select M.* from member M left join memberFile MF
+		on M.id = MF.id
+		where M.id = #{id} and M.pw = #{pw}
 		
 	</select>
 	
@@ -52,7 +53,30 @@
 	<insert id = "setFileInsert" parameterType="MemberFileDTO">
 		insert into memberFile values(fn_seq.nextval, #{id}, #{fileName}, #{OrigineName})
 	</insert>
+	
+	<select id="memberLoginFile" resultType="MemberFileDTO" parameterType="MemberDTO">
+		select * from memberFile where id=#{id}
+	</select>
+	
+	<!-- 1대1 Join -->
+	<!-- association은 1:1관계 -->
+	<ResultMap id="memberLoginResult" type="MemberDTO">
+		<!-- select * from memberFile where id=#{id} -->
+		<id property="id" column="id" />
+		<result property="id" column="pw" />
+		<result property="id" column="name" />
+		<id property="phone" column="phone" />
+		<id property="email" column="email" />
+	
+		<association property="memberFileDTO" javaType="MemberFileDTO"  resultMap="memberFileResult">
 
-
+		</association>
+	</ResultMap>
+	
+	<resultMap type="MemberFileDTO" id="memberFileResult">
+			<id property="num" column="num" />
+			<result property="fileName" column="fileName"/>
+			<result property="origineName" column="origineName"/>
+	</resultMap>
 
 </mapper>
