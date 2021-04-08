@@ -2,6 +2,8 @@ package com.ee.y3.board;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.ee.y3.util.Pager;
 
 public interface BoardService {
@@ -13,7 +15,7 @@ public interface BoardService {
 	public BoardDTO getSelect(BoardDTO boardDTO)throws Exception;
 	
 	//글 추가
-	public int setInsert(BoardDTO boardDTO)throws Exception;
+	public int setInsert(BoardDTO boardDTO, MultipartFile [] files)throws Exception;
 	
 	//글 수정
 	public int setUpdate(BoardDTO boardDTO)throws Exception;

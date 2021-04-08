@@ -9,14 +9,13 @@
 <mapper namespace="com.ee.y3.member.MemberDAO">
 
 	<!-- login  -->										<!-- resultType : com.ee.y3.member.MemberDTO받아서 하나씩 넘기기? -->
-	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
+	<select id="memberLogin" parameterType="MemberDTO" resultMap="memberLoginResult">
 
 		select M.* from member M left join memberFile MF
 		on M.id = MF.id
 		where M.id = #{id} and M.pw = #{pw}
 		
 	</select>
-	
 	
 	
 	<!-- insert는 resultType이 int이므로 resultType선언 x -->
@@ -60,23 +59,21 @@
 	
 	<!-- 1대1 Join -->
 	<!-- association은 1:1관계 -->
-	<ResultMap id="memberLoginResult" type="MemberDTO">
-		<!-- select * from memberFile where id=#{id} -->
+	<resultMap type="MemberDTO" id="memberLoginResult">
 		<id property="id" column="id" />
-		<result property="id" column="pw" />
-		<result property="id" column="name" />
-		<id property="phone" column="phone" />
-		<id property="email" column="email" />
-	
-		<association property="memberFileDTO" javaType="MemberFileDTO"  resultMap="memberFileResult">
+		<result property="pw" column="pw"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<association property="memberFileDTO" javaType="MemberFileDTO" resultMap="memberFileResult">
 
 		</association>
-	</ResultMap>
+	</resultMap>
 	
 	<resultMap type="MemberFileDTO" id="memberFileResult">
-			<id property="num" column="num" />
-			<result property="fileName" column="fileName"/>
-			<result property="origineName" column="origineName"/>
+		<id property="num" column="num"/>
+		<result property="fileName" column="fileName"/>
+		<result property="origineName" column="origineName"/>
 	</resultMap>
 
 </mapper>
