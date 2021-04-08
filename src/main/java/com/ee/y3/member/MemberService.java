@@ -1,14 +1,9 @@
 package com.ee.y3.member;
 
-import java.io.File;
-import java.util.Calendar;
-import java.util.UUID;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ee.y3.util.FileManager;
@@ -31,10 +26,20 @@ public class MemberService {
 	//Join
 	public int memberJoin(MemberDTO memberDTO, MultipartFile avatar, HttpSession session) throws Exception{
 		
-		fileManager.save("member", avatar, session);
+		String fileName = fileManager.save("member", avatar, session);
 		
-		return 0;
-		//return memberDAO.memberJoin(memberDTO);
+		MemberFileDTO memberFileDTO = new MemberFileDTO();
+		
+		memberFileDTO.setId(memberDTO.getId());
+		memberFileDTO.setOrigineName(avatar.getOriginalFilename());
+		memberFileDTO.setFileName(fileName);
+		
+		//순서도 중요! member테이블에서 먼저 참조해서 넣어야함!
+		int result = memberDAO.memberJoin(memberDTO);
+		result = memberDAO.setFileInsert(memberFileDTO);
+		
+		
+		return result;
 		
 		
 	}
