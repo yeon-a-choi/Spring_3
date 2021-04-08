@@ -52,18 +52,48 @@
 		where R between #{startRow} and #{lastRow}
 	</select>
 	
-	
-	
+		
 	<!-- insert -->
 	<insert id="setInsert" parameterType="BoardDTO">
-		insert into qna values(qna_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0, qna_seq.currval, 0, 0) 
+	
+		<!-- keyProperty는 파라미터의 이름, order는 after와 before가 있찌만 after는 잘 안되므로 before 사용 -->
+		<selectKey keyProperty="num" resultType="java.lang.Long" order="BEFORE">
+			select qna_seq.nextval from dual
+		</selectKey>
+		insert into qna values(#{num}, #{title}, #{writer}, #{contents}, sysdate, 0, #{num}, 0, 0) 
 	</insert>
 	
 	
 	<!-- select -->
-	<select id="getSelect" parameterType="BoardDTO" resultType="QnaDTO">
-		select * from qna where num=#{num}
+	<select id="getSelect" parameterType="BoardDTO" resultMap="selectResult">
+	
+		select Q.*, QF.*
+		from qna Q left join qnaFiles QF
+		on Q.num = QF.num
+		where Q.num = #{num}
+		
 	</select>
+	
+	<!-- 1:다 collection -->
+	<resultMap type="QnaDTO" id="selectResult">
+	
+		<id property="num" column="num"/>
+		<result property="title" column="title"/>
+		<result property="writer" column="writer"/>
+		<result property="contents" column="contents"/>
+		<result property="hit" column="hit"/>
+		<result property="regdate" column="regdate"/>
+		<result property="ref" column="ref"/>
+		<result property="step" column="step"/>
+		<result property="depth" column="depth"/>
+		
+		<collection property="boardFiles" javaType="java.util.List" ofType="BoardFileDTO">
+			<id property="fileNum" column="fileNum"/>
+			<result property="fileName" column="fileName"/>
+			<result property="OrigineName" column="OrigineName"/>
+		</collection>
+	
+	</resultMap>
 	
 	
 	<!-- delete -->
@@ -90,6 +120,11 @@
 	<!-- reply -->
 	<insert id="setReply" parameterType="QnaDTO">
 		insert into qna values(qna_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0, #{ref}, #{step}, #{depth})
+	</insert>
+	
+	<!-- file upload -->
+	<insert id="setFileInsert" parameterType="BoardFileDTO">
+		insert into qnaFiles values(file_seq.nextval, #{num}, #{fileName}, #{OrigineName})
 	</insert>
 
 </mapper>

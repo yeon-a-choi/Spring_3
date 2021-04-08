@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ee.y3.board.BoardDAO;
 import com.ee.y3.board.BoardDTO;
+import com.ee.y3.board.BoardFileDTO;
 import com.ee.y3.util.Pager;
 
 @Repository
@@ -58,6 +59,16 @@ public class NoticeDAO implements BoardDAO {
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
+	}
+	
+	
+	public long getNum() throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getNum");
+	}
+	
+	
+	public int setFileInsert(BoardFileDTO boardFileDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileInsert", boardFileDTO);
 	}
 	
 	

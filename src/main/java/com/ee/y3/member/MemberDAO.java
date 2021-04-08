@@ -54,5 +54,9 @@ public class MemberDAO {
 //		
 //		return sqlSession.selectOne(NAMESPACE+"memberPage", memberDTO);
 //	}
+	
+	public MemberFileDTO getMemberFile(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getMemberFile", memberDTO);
+	}
 
 }

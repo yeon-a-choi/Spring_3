@@ -103,7 +103,7 @@ public class MemberController {
 	public String memberDelete(HttpSession session) throws Exception{
 		
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		int result = memberService.memberDelete(memberDTO);
+		int result = memberService.memberDelete(memberDTO, session);
 		
 		System.out.println(result);
 		//정보를 삭제했으니 로그아웃시켜야함, session에는 값이 아직 남아있음.

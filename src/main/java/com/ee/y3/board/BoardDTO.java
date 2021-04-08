@@ -1,6 +1,7 @@
 package com.ee.y3.board;
 
 import java.util.Date;
+import java.util.List;
 
 public class BoardDTO {
 	
@@ -10,6 +11,16 @@ public class BoardDTO {
 	private String contents;
 	private long hit;
 	private Date regdate;
+	
+	
+	private List<BoardFileDTO> boardFiles = null;
+	// get set
+	public List<BoardFileDTO> getBoardFiles() {
+		return boardFiles;
+	}
+	public void setBoardFiles(List<BoardFileDTO> boardFiles) {
+		this.boardFiles = boardFiles;
+	}
 	
 	
 	//get set

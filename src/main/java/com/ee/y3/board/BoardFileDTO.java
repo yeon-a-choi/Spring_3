@@ -8,6 +8,7 @@ public class BoardFileDTO {
 	private String OrigineName;
 	
 	
+	
 	//get set
 	public long getFileNum() {
 		return fileNum;

@@ -57,7 +57,12 @@ public class MemberService {
 	
 	
 	//Delete
-	public int memberDelete(MemberDTO memberDTO) throws Exception{		
+	public int memberDelete(MemberDTO memberDTO, HttpSession session) throws Exception{
+		
+		MemberFileDTO memberFileDTO = memberDAO.getMemberFile(memberDTO);
+		
+		boolean check = fileManager.delete("member", memberFileDTO.getFileName(), session);
+		
 		return memberDAO.memberDelete(memberDTO);
 	}
 	
