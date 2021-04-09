@@ -27,9 +27,9 @@ public class CommentsController {
 	public ModelAndView setInsert(CommentsDTO commentsDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		int result = commentsService.setInsert(commentsDTO);
+		System.out.println("getNum : "+commentsDTO.getNum());
 		
-		System.out.println(commentsDTO.getNum());
+		int result = commentsService.setInsert(commentsDTO);
 		
 		mv.addObject("result", result);
 		mv.setViewName("common/ajaxResult");
