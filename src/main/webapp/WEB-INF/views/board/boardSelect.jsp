@@ -45,7 +45,7 @@
 	  			<textarea class="form-control" rows="5" id="contents"></textarea>
 			</div>
 			
-			<button type="button" class="btn btn-secondary" id="write">Write</button>
+			<button type="button" class="btn btn-success" id="write">Write</button>
 			
 		</div>
 		
