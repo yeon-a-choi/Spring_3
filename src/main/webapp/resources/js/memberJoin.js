@@ -8,14 +8,20 @@ let message = "6글자 미만입니다.";
 let c = "r1"
 
 id.addEventListener("blur", function(){
-		
+	
+	
+	
 	if(id.value.length > 5){
 		message = "6글자 이상입니다.";
 		c = "r2";
+		idCheckResult = true;
 	} else{
 		message = "6글자 미만입니다.";
 		c = "r1";
+		idCheckResult=false;
 	}
+	
+	console.log(idResult);
 	
 	idResult.innerText = message;
 	idResult.setAttribute("class", c);
@@ -91,7 +97,7 @@ btn.addEventListener("click", function(){
 	//조건이 만족하면 서버로 보내고 만족하지 않으면 보내지않음.
 	let frm = document.getElementById("frm");
 	
-	/*
+	
 	if(id.value == "" || id.value.length<6){
 		alert("id를 입력하지않았거나, id가 6글자보다 작습니다.");
 		//focus를 사용해서 입력하지 않았거나, 올바르지 않은 정보 입력 시 해당 input칸으로 이동
@@ -112,19 +118,30 @@ btn.addEventListener("click", function(){
 	} else if(id.value != "" && id.value.length>5 && pw.value != "" && name.value != "" && phone.value != "" && email.value != ""){
 		//db로 값 넘기기 위해선 주석해제
 		frm.submit(); 
-	}*/ 
-		if(id.value != "" && id.value.length>5 && pw.value != "" && name.value != "" && phone.value != "" && email.value != ""){
-			frm.submit();
-		}else{
-			alert("회원가입실패!");
-		}
+	}
 		
 		//test용 alert
 		//alert('회원가입 가능!');
 	
-	
-	
 });
+
+let idCheckResult = false; // id check 결과
+
+//ID 확인
+$("#id").blur(function(){
+	let id = $("#id").val();
+	$.get("./memberIdCheck?id="+id, function(result){
+		result = result.trim();
+		let str = "사용가능한 ID 입니다."
+		
+		if(result='0'){
+			str = "중복 ID 입니다.";
+		}
+		
+		$("#idCheckResult").html(str);
+	});
+});
+
 
 
 /* ------------------- 위에 이어서 --------------------- */

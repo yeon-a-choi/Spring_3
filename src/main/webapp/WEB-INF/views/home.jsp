@@ -19,15 +19,37 @@
 
 <title>Home</title>
 
+<style type="text/css">
+	#d1 {
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		overflow: hidden;
+	}
+	
+	#d2 {
+		width: 50px;
+		height: 50px;
+		background-color: yellow;
+		margin: 75px auto;
+	}
+</style>
+
 </head>
 <body>
 
-	<button onclick="go()">BUTTON</button>
-	<button id="btn">CILCK</button>
-	<button id="btn2">CILCK2</button>
-
-	<h1>Version 1</h1>
+	<button class="b">BUTTON</button>
+	<button id="btn" class="b">CLICK</button>
+	<button id="btn2" class="b">CLICK2</button>
+	<h1 id="t">version 3</h1>
+	<ol id="result">
+		<li>A</li>
+	</ol>
 	
+	<select id="mon">
+	
+	</select>	
+
 	
 	<div id="d1">
 		<div id="d2"></div>
@@ -36,7 +58,7 @@
 	<script type="text/javascript">
 	
 		$("#btn2").click(function(){
-			$.get("./test", function(data){
+			$.get("./test?num=3", function(data){
 				console.log(data);
 				$("#d2").html(data);
 				

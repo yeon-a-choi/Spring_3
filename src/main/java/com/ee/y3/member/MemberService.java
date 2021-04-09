@@ -71,4 +71,10 @@ public class MemberService {
 		return memberDAO.memberUpdate(memberDTO);
 	}
 	
+	
+	//ID 중복 체크
+	public MemberDTO memberIdCheck(MemberDTO memberDTO) throws Exception{
+		return memberDAO.memberIdCheck(memberDTO);
+	}
+	
 }
