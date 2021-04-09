@@ -52,13 +52,43 @@
 	
 	
 	<!-- 선택한 글의 상세 내용 불러오기 -->
-	<select id="getSelect" parameterType="BoardDTO" resultType="NoticeDTO">
-		select * from notice where num=#{num}
+	<select id="getSelect" parameterType="BoardDTO" resultMap="selectResult">
+		
+		select N.*, NF.*
+		from notice N left join noticeFiles NF
+		on N.num = NF.num
+		where N.num = #{num}
+
+	</select>
+	
+	
+	<!-- 1:다 는 collection -->
+	<resultMap type="NoticeDTO" id="selectResult">
+	
+		<id property="num" column="num"/> 
+		<result property="title" column="title"/>
+		<result property="writer" column="writer"/>
+		<result property="contents" column="contents"/>
+		<result property="hit" column="hit"/>
+		<result property="regdate" column="regdate"/>
+		
+		<collection property="boardFiles" javaType="java.util.List" ofType="BoardFileDTO">
+				<id property="fileNum" column="fileNum"/>
+				<result property="fileName" column="fileName"/>
+				<result property="OrigineName" column="OrigineName"/>
+		</collection>
+		
+	</resultMap>
+	
+	
+	<!-- notice_seq 미리 만들기 -->
+	<select id="getNum" resultType="java.lang.Long">
+		select notice_seq.nextval from dual
 	</select>
 	
 	<!-- 공지 작성 -->
 	<insert id="setInsert" parameterType="BoardDTO">
-		insert into notice values (notice_seq.nextval, #{title}, #{writer}, #{contents}, 0, sysdate)
+		insert into notice values (#{num}, #{title}, #{writer}, #{contents}, 0, sysdate)
 	</insert>
 	
 	<!-- 공지 수정 -->
@@ -75,6 +105,12 @@
 	<update id="setHitUpdate" parameterType="BoardDTO">
 		update notice set hit=hit+1 where num=#{num}
 	</update>
+	
+	
+	<!-- file upload -->
+	<insert id="setFileInsert" parameterType="BoardFileDTO">
+		insert into noticeFiles values(file_seq.nextval, #{num}, #{fileName}, #{OrigineName})
+	</insert>
 
 
 </mapper>

@@ -22,6 +22,12 @@
 		<h3>Writer : ${dto.writer}</h3>
 		<h3>Contents : ${dto.contents}</h3>
 		
+		<c:forEach items="${dto.boardFiles}" var="file">
+			<a href="../resources/upload/${board}/${file.fileName}">${file.origineName}</a>
+			<!-- <a href="../resources/upload/${board}/${file.fileName}">${file.origineName}</a> -->
+		</c:forEach>
+		
+		
 		<a href="./${board}Update?num=${dto.num}" class="btn btn-success">Update</a>
 		<a href="#" id="del" class="btn btn-danger">Delete</a>
 		<!-- ./${board}Delete?num=${dto.num} -->

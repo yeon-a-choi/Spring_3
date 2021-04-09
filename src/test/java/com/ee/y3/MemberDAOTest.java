@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ee.y3.member.MemberDAO;
 import com.ee.y3.member.MemberDTO;
+import com.ee.y3.member.MemberFileDTO;
 
 
 public class MemberDAOTest extends MyAbstractTest {
@@ -15,6 +16,17 @@ public class MemberDAOTest extends MyAbstractTest {
 	private MemberDAO memberDAO;
 	
 	@Test
+	public void setMemberFileInsertTest() throws Exception{
+		MemberFileDTO memberFileDTO = new MemberFileDTO();
+		memberFileDTO.setId("iu");
+		memberFileDTO.setFileName("f1");
+		memberFileDTO.setOrigineName("o1");
+		
+		int result = memberDAO.setFileInsert(memberFileDTO);
+		assertEquals(1, result);
+	}
+	
+	//@Test
 	public void memberLogin() throws Exception {
 		
 		// MemberDTO를 Login에 매개변수로 선언하면 값을 넣어줄 수가 없어서 오류

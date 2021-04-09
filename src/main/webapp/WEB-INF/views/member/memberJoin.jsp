@@ -33,7 +33,7 @@
 		<br>
 		<h2>Member Join Page</h2>
 		
-		<form id="frm" action="./memberJoin" method="post">
+		<form id="frm" action="./memberJoin" method="post" enctype="multipart/form-data">
 			<!-- ID -->
 			<div class="form-group">
 				<label for="id">ID</label> 
@@ -84,19 +84,26 @@
 				<!-- 비어 있으면 X -->
 			</div>
 			
+			
+			<div class="form-group">
+				<label for="avatar">Avatar</label> 
+				<input type="file" class="form-control etc" id="avatar" name="avatar">
+				<!-- 비어 있으면 X -->
+			</div>
+			
 			<!-- 이 버튼은 submit이벤트가 내장되어있어 값을 비교하고 보내는것이 아닌 그냥 보내므로 null값이여도 보내서 exception발생시킴 -->
 			<!-- <button type="submit" class="btn btn-primary" id="check">Submit</button> -->
 						
 			<!-- input type으로 만든 버튼은 form 내부/외부 둘 다 작동안함 -->
 			<!-- <input type="button" value="JOIN" class="btn btn-primary">  -->
 			
-			<input type="button" value="JOIN" id="btn" class="btn btn-primary">
-			
+			<input type="submit" value="JOIN" id="btn" class="btn btn-primary">
+			<!-- button -->
 		</form>
 		
 	</div>
 	
-	<script type="text/javascript" src="../resources/js/memberJoin.js?var=1"></script>
+	<!-- <script type="text/javascript" src="../resources/js/memberJoin.js?var=2"></script> -->
 
 </body>
 </html>

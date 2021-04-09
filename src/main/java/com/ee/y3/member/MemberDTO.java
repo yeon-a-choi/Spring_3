@@ -8,6 +8,8 @@ public class MemberDTO {
 	private String phone;
 	private String email;
 	
+	private MemberFileDTO memberFileDTO;
+	
 	
 	//get set
 	public String getId() {
@@ -42,6 +44,12 @@ public class MemberDTO {
 	}
 	
 	
+	public MemberFileDTO getMemberFileDTO() {
+		return memberFileDTO;
+	}
+	public void setMemberFileDTO(MemberFileDTO memberFileDTO) {
+		this.memberFileDTO = memberFileDTO;
+	}
 	
 
 }

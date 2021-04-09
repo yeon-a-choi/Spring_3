@@ -12,11 +12,13 @@
 	<typeAliases>
 												<!-- 통상적으로 별칭은 클래스이름으로 -->
 		<typeAlias type="com.ee.y3.member.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.ee.y3.member.MemberFileDTO" alias="MemberFileDTO"/>
 		<typeAlias type="com.ee.y3.bankbook.BankBookDTO" alias="BankBookDTO"/>
 		<typeAlias type="com.ee.y3.account.AccountDTO" alias="AccountDTO"/>
 		<typeAlias type="com.ee.y3.board.notice.NoticeDTO" alias="NoticeDTO"/>
 		<typeAlias type="com.ee.y3.board.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="com.ee.y3.board.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.ee.y3.board.BoardFileDTO" alias="BoardFileDTO"/>
 		<typeAlias type="com.ee.y3.util.Pager" alias="Pager"/>
 	
 		<typeAlias type="java.lang.Long" alias="Long"/>
