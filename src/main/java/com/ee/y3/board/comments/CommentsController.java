@@ -23,6 +23,16 @@ public class CommentsController {
 //		System.out.println(commentsDTO.getContents());
 //	}
 	
+	@PostMapping("commentsDelete")
+	public void commentsDelete(int [] commentNum) throws Exception{
+		System.out.println("start");
+		/*
+		 * for(int n:commentNum) { System.out.println(n); }
+		 */
+		System.out.println("finish");
+	}
+	
+	
 	@PostMapping("commentsInsert")
 	public ModelAndView setInsert(CommentsDTO commentsDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();

@@ -18,6 +18,6 @@ public class CommentsDAO {
 	}
 	
 	public int setInsert(CommentsDTO commentsDTO) throws Exception{
-		return sqlSession.insert(NAMESPACE+"setInsert", NAMESPACE);
+		return sqlSession.insert(NAMESPACE+"setInsert", commentsDTO);
 	}
 }
