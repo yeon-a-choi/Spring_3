@@ -27,29 +27,22 @@
 	<button id="btn2">CILCK2</button>
 
 	<h1>Version 1</h1>
+	
+	
+	<div id="d1">
+		<div id="d2"></div>
+	</div>
 
 	<script type="text/javascript">
 	
-		let btn = document.getElementById("btn");
-		let btn2 = document.getElementById("btn2");
-		
-		//btn2.addEventListener("click", go);
-		btn2.addEventListener("click", function(){
-			alert("btn2");
-			go();
+		$("#btn2").click(function(){
+			$.get("./test", function(data){
+				console.log(data);
+				$("#d2").html(data);
+				
+			});
 		});
 		
-		
-		//btn.onclick=go;
-		btn.onclick = function() {
-			alert("익명함수");
-			go();
-		}
-		
-		function go() {
-			alert("hello");
-		}
-	
 	</script>
 
 	<c:import url="./template/header.jsp"></c:import>
