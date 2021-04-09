@@ -28,6 +28,27 @@
 		</c:forEach>
 		
 		
+		<!-- 댓글 리스트 -->
+		<div id="comments" title="${dto.num}">
+			
+		</div>
+		
+		<div>
+	
+			<div class="form-group">
+			  <label for="usr">Writer:</label>
+			  <input type="text" class="form-control" id="writer">
+			</div>
+		
+			<div class="form-group">
+	  			<label for="comment">Comment:</label>
+	  			<textarea class="form-control" rows="5" id="contents"></textarea>
+			</div>
+			
+			<button type="button" class="btn btn-secondary" id="write">Write</button>
+			
+		</div>
+		
 		<a href="./${board}Update?num=${dto.num}" class="btn btn-success">Update</a>
 		<a href="#" id="del" class="btn btn-danger">Delete</a>
 		<!-- ./${board}Delete?num=${dto.num} -->
@@ -48,6 +69,8 @@
 	
 
 </body>
+
+<script type="text/javascript" src="../resources/jquery/comments.js"></script>
 
 <script type="text/javascript">
 	const del = document.getElementById("del");

@@ -39,6 +39,7 @@
 				<label for="id">ID</label> 
 				<input type="text" class="form-control" id="id" name="id"
 				aria-describedby="idHelp">
+				<h4 id=idResult></h4>
 				<h4 id=idCheckResult></h4>
 				<!-- ID 는 6글자 이상 -->
 			</div>

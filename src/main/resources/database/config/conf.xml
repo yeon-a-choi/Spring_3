@@ -19,6 +19,7 @@
 		<typeAlias type="com.ee.y3.board.qna.QnaDTO" alias="QnaDTO"/>
 		<typeAlias type="com.ee.y3.board.BoardDTO" alias="BoardDTO"/>
 		<typeAlias type="com.ee.y3.board.BoardFileDTO" alias="BoardFileDTO"/>
+		<typeAlias type="com.ee.y3.board.comments.CommentsDTO" alias="CommentsDTO"/>
 		<typeAlias type="com.ee.y3.util.Pager" alias="Pager"/>
 	
 		<typeAlias type="java.lang.Long" alias="Long"/>
