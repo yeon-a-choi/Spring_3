@@ -27,7 +27,7 @@
 		<br>
 		<h2>${board} Update Page</h2>
 
-		<form id="form" action="./${board}Update" method="post">
+		<form id="form" action="./${board}Update" method="post" enctype="multipart/form-data">
 			
 			<input type="hidden" name="num" value="${param.num}">
 			

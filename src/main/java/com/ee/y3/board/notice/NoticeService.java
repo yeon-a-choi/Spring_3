@@ -66,8 +66,19 @@ public class NoticeService implements BoardService {
 
 
 	@Override
-	public int setUpdate(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
+	public int setUpdate(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+		for(MultipartFile multipartFile:files) {
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			//1. File들을 HDD에 저장
+			String fileName= fileManager.save("notice", multipartFile, session);
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOrigineName(multipartFile.getOriginalFilename());
+			boardFileDTO.setNum(boardDTO.getNum());
+			//2. DB에 Insert
+			noticeDAO.setFileInsert(boardFileDTO);
+		}
+		
+		
 		return noticeDAO.setUpdate(boardDTO);
 	}
 
