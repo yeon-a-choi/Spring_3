@@ -112,5 +112,12 @@
 		insert into noticeFiles values(file_seq.nextval, #{num}, #{fileName}, #{OrigineName})
 	</insert>
 
+	<delete id="setFileDelete" parameterType="BoardFileDTO">
+		delete noticeFiles where fileNum=#{fileNum}
+	</delete>
+	
+	<select id="getFileSelect" parameterType="BoardFileDTO" resultType="BoardFileDTO">
+		select * from noticeFiles where fileNum=#{fileNum}
+	</select>
 
 </mapper>

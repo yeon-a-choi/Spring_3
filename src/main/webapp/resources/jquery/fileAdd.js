@@ -2,7 +2,7 @@
  * 
  */
 
-let count=0;
+let count = $("#files").attr("title");
 
 $("#add").click(function(){
 	if(count < 5){
@@ -13,6 +13,7 @@ $("#add").click(function(){
 		alert("최대 5개만 가능");
 	}
 });
+
 
 
 $("#del").click(function(){
